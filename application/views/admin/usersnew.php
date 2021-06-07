@@ -38,13 +38,12 @@
       </div>
       <div class="sidebar-wrapper">
             <ul class="nav">
-            <li>
+              <li>
                 <a href="<?= base_url('admin')?>">
                   <i class="nc-icon nc-bank"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
-
               <li>
                 <a href="<?= base_url('admin/tabel_barangmasuk')?>">
                   <i class="nc-icon nc-diamond"></i>

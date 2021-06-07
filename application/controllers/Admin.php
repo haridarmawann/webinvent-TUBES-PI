@@ -261,7 +261,7 @@ class Admin extends CI_Controller{
   {
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/form_barangmasuk/form_insert',$data);
+    $this->load->view('admin/form_barangmasuk/form_insert_new',$data);
   }
 
   public function tabel_barangmasuk()
@@ -279,7 +279,7 @@ class Admin extends CI_Controller{
     $data['data_barang_update'] = $this->M_admin->get_data('tb_barang_masuk',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/form_barangmasuk/form_update',$data);
+    $this->load->view('admin/form_barangmasuk/form_update_new',$data);
   }
 
   public function delete_barang($id_transaksi)
@@ -467,7 +467,7 @@ class Admin extends CI_Controller{
     $data['list_data'] = $this->M_admin->get_data('tb_barang_masuk',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/perpindahan_barang/form_update',$data);
+    $this->load->view('admin/perpindahan_barang/form_update_new',$data);
   }
 
   public function proses_data_keluar()
