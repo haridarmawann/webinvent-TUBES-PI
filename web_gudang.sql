@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 17, 2018 at 11:50 
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 09 Jun 2021 pada 04.57
+-- Versi server: 10.4.6-MariaDB
+-- Versi PHP: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,7 +25,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_barang_keluar`
+-- Struktur dari tabel `tabel_barang`
+--
+
+CREATE TABLE `tabel_barang` (
+  `Id_barang` int(11) NOT NULL,
+  `Nama_barang` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tb_barang_keluar`
 --
 
 CREATE TABLE `tb_barang_keluar` (
@@ -39,7 +52,7 @@ CREATE TABLE `tb_barang_keluar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_barang_keluar`
+-- Dumping data untuk tabel `tb_barang_keluar`
 --
 
 INSERT INTO `tb_barang_keluar` (`id`, `id_transaksi`, `tanggal_masuk`, `tanggal_keluar`, `lokasi`, `kode_barang`, `nama_barang`, `satuan`, `jumlah`) VALUES
@@ -61,7 +74,7 @@ INSERT INTO `tb_barang_keluar` (`id`, `id_transaksi`, `tanggal_masuk`, `tanggal_
 (16, 'WG-201871602934', '18/01/2018', '16/03/2018', 'Papua', '312212331222', 'Kopi Hitam', 'Dus', '10');
 
 --
--- Triggers `tb_barang_keluar`
+-- Trigger `tb_barang_keluar`
 --
 DELIMITER $$
 CREATE TRIGGER `TG_BARANG_KELUAR` AFTER INSERT ON `tb_barang_keluar` FOR EACH ROW BEGIN
@@ -76,7 +89,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_barang_masuk`
+-- Struktur dari tabel `tb_barang_masuk`
 --
 
 CREATE TABLE `tb_barang_masuk` (
@@ -90,16 +103,17 @@ CREATE TABLE `tb_barang_masuk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_barang_masuk`
+-- Dumping data untuk tabel `tb_barang_masuk`
 --
 
 INSERT INTO `tb_barang_masuk` (`id_transaksi`, `tanggal`, `lokasi`, `kode_barang`, `nama_barang`, `satuan`, `jumlah`) VALUES
-('WG-201871602934', '18/01/2018', 'Papua', '312212331222', 'Kopi Hitam', 'Dus', '90');
+('WG-201871602934', '18/01/2018', 'Papua', '312212331222', 'Kopi Hitam', 'Dus', '90'),
+('WG-202141089326', '2000-04-07', 'Papua', '8300188101', 'mobil', 'Dus', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_satuan`
+-- Struktur dari tabel `tb_satuan`
 --
 
 CREATE TABLE `tb_satuan` (
@@ -109,7 +123,7 @@ CREATE TABLE `tb_satuan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_satuan`
+-- Dumping data untuk tabel `tb_satuan`
 --
 
 INSERT INTO `tb_satuan` (`id_satuan`, `kode_satuan`, `nama_satuan`) VALUES
@@ -120,7 +134,7 @@ INSERT INTO `tb_satuan` (`id_satuan`, `kode_satuan`, `nama_satuan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_upload_gambar_user`
+-- Struktur dari tabel `tb_upload_gambar_user`
 --
 
 CREATE TABLE `tb_upload_gambar_user` (
@@ -131,7 +145,7 @@ CREATE TABLE `tb_upload_gambar_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tb_upload_gambar_user`
+-- Dumping data untuk tabel `tb_upload_gambar_user`
 --
 
 INSERT INTO `tb_upload_gambar_user` (`id`, `username_user`, `nama_file`, `ukuran_file`) VALUES
@@ -143,7 +157,7 @@ INSERT INTO `tb_upload_gambar_user` (`id`, `username_user`, `nama_file`, `ukuran
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -151,12 +165,12 @@ CREATE TABLE `user` (
   `username` varchar(200) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `role` tinyint(4) NOT NULL DEFAULT '0',
+  `role` tinyint(4) NOT NULL DEFAULT 0,
   `last_login` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`, `last_login`) VALUES
@@ -164,66 +178,77 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`, `last_login`)
 (12, 'husni', 'husni@gmail.com', '$2y$10$MXbWRsLw6S6xpyQu2/ZiEeB7oTCLrfEPpDcXWaszFVoYj.Yv51wG.', 0, '17-03-2018 11:19'),
 (16, 'test', 'test@gmail.com', '$2y$10$CTjzvmT5B.dxojKZOxsjTeMc4E7.Gwl9slAgX.0lozwGrKSMxzWdO', 1, '16-03-2018 4:46'),
 (17, 'coba', 'coba@gmail.com', '$2y$10$WRMyjAi8nnkr3J3QvzvyHuEoqay5dYd5NgMJKxsxtXKCp8.JCxZm.', 1, '15-01-2018 15:41'),
-(20, 'admin', 'admin@gmail.com', '$2y$10$3HNkMOtwX8X88Xb3DIveYuhXScTnJ9m16/rPDF1/VTa/VTisxVZ4i', 1, '17-03-2018 11:48');
+(20, 'admin', 'admin@gmail.com', '$2y$10$3HNkMOtwX8X88Xb3DIveYuhXScTnJ9m16/rPDF1/VTa/VTisxVZ4i', 1, '07-06-2021 8:52');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tb_barang_keluar`
+-- Indeks untuk tabel `tabel_barang`
+--
+ALTER TABLE `tabel_barang`
+  ADD PRIMARY KEY (`Id_barang`);
+
+--
+-- Indeks untuk tabel `tb_barang_keluar`
 --
 ALTER TABLE `tb_barang_keluar`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tb_barang_masuk`
+-- Indeks untuk tabel `tb_barang_masuk`
 --
 ALTER TABLE `tb_barang_masuk`
   ADD PRIMARY KEY (`id_transaksi`);
 
 --
--- Indexes for table `tb_satuan`
+-- Indeks untuk tabel `tb_satuan`
 --
 ALTER TABLE `tb_satuan`
   ADD PRIMARY KEY (`id_satuan`);
 
 --
--- Indexes for table `tb_upload_gambar_user`
+-- Indeks untuk tabel `tb_upload_gambar_user`
 --
 ALTER TABLE `tb_upload_gambar_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tb_barang_keluar`
+-- AUTO_INCREMENT untuk tabel `tb_barang_keluar`
 --
 ALTER TABLE `tb_barang_keluar`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
--- AUTO_INCREMENT for table `tb_satuan`
+-- AUTO_INCREMENT untuk tabel `tb_satuan`
 --
 ALTER TABLE `tb_satuan`
   MODIFY `id_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `tb_upload_gambar_user`
+-- AUTO_INCREMENT untuk tabel `tb_upload_gambar_user`
 --
 ALTER TABLE `tb_upload_gambar_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
