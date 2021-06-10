@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -56,6 +56,12 @@
                 <a href="<?= base_url('admin/tabel_barangkeluar')?>">
                   <i class="nc-icon nc-pin-3"></i>
                   <p>Data Barang Keluar</p>
+                </a>
+              </li>
+              <li>
+                <a href="<?php echo base_url('admin/tabel_barang')?>">
+                  <i class="nc-icon nc-tile-56"></i>
+                  <p>Data Jenis Barang</p>
                 </a>
               </li>
               <li>

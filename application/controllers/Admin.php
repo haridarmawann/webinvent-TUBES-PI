@@ -158,7 +158,7 @@ class Admin extends CI_Controller{
     $data['token_generate'] = $this->token_generate();
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->session->set_userdata($data);
-    $this->load->view('admin/form_users/form_insert_new',$data);
+    $this->load->view('admin/form_users/form_insert',$data);
   }
 
   public function update_user()
@@ -169,7 +169,7 @@ class Admin extends CI_Controller{
     $data['list_data'] = $this->M_admin->get_data('user',$where);
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->session->set_userdata($data);
-    $this->load->view('admin/form_users/form_update_new',$data);
+    $this->load->view('admin/form_users/form_update',$data);
   }
 
   public function proses_delete_user()
@@ -503,6 +503,7 @@ class Admin extends CI_Controller{
     }
 
   }
+
   ####################################
     // END DATA MASUK KE DATA KELUAR
   ####################################
@@ -518,7 +519,80 @@ class Admin extends CI_Controller{
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/tabel/tabel_barangkeluar_new',$data);
   }
+   ####################################
+        // DATA BARANG KELUAR
+  ####################################
+  public function tabel_barang()
+  {
+    $data['list_data'] = $this->M_admin->select('tb_barang');
+    $this->load->view('admin/tabel/tabel_barang',$data);
+  }
+public function form_barang()
+  {
+    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
+    $this->load->view('admin/form_barang/form_insert',$data);
+  }
+ public function proses_barang_insert()
+  {
+    $this->form_validation->set_rules('Nama_barang','Nama Barang','trim|required|max_length[100]');
 
+    if($this->form_validation->run() ==  TRUE)
+    {
+      $nama_barang = $this->input->post('Nama_barang' ,TRUE);
+
+      $data = array(
+           
+            'Nama_barang' => $nama_barang
+      );
+      $this->M_admin->insert('tb_barang',$data);
+
+      $this->session->set_flashdata('msg_berhasil','Data Jenis Barang Berhasil Ditambahkan');
+      redirect(base_url('admin/form_barang'));
+    }else {
+      $this->load->view('admin/form_barang/form_insert');
+    }
+  }
+  public function update_barang1()
+  {
+    $uri = $this->uri->segment(3);
+    $where = array('Id_barang' => $uri);
+    $data['data_barang'] = $this->M_admin->get_data('tb_barang',$where);
+    $this->load->view('admin/form_barang/form_update',$data);
+  }
+   public function proses_barang_update()
+  {
+    $this->form_validation->set_rules('Nama_barang','Nama barang','trim|required|max_length[100]');
+
+    if($this->form_validation->run() ==  TRUE)
+    {
+      $id_barang = $this->input->post('Id_barang' ,TRUE);
+      $nama_barang = $this->input->post('Nama_barang' ,TRUE);
+
+      $where = array(
+            'Id_barang' => $id_barang
+      );
+
+      $data = array(
+            'Id_barang' => $id_barang ,
+            'Nama_barang' => $nama_barang
+      );
+      $this->M_admin->update('tb_barang',$data,$where);
+
+      $this->session->set_flashdata('msg_berhasil','Data Jenis barang Berhasil Di Update');
+      redirect(base_url('admin/tabel_barang'));
+    }else {
+      $this->load->view('admin/form_barang/form_update');
+    }
+}
+  public function delete_barang1()
+  {
+    $uri = $this->uri->segment(3);
+    $where = array('Id_barang' => $uri);
+    $this->M_admin->delete('tb_barang',$where);
+    redirect(base_url('admin/tabel_barang'));
+  }
 
 }
+
+
 ?>

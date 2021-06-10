@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,17 +7,16 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Paper Dashboard 2 by Creative Tim
+    
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="<?=base_url()?>/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="<?=base_url()?>/assets/demo/demo.css" rel="stylesheet" />
+  <link href="<?= base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="<?= base_url()?>/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  
 </head>
 
 <body class="">
@@ -27,69 +25,66 @@
       <div class="logo">
         <a href="https://www.creative-tim.com" class="simple-text logo-mini">
           <div class="logo-image-small">
-            <img src="<?=base_url()?>/assets/img/logo-small.png">
+            <img src="<?= base_url()?>/assets/img/logo-small.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
         <a href="https://www.creative-tim.com" class="simple-text logo-normal">
         <?=$this->session->userdata('name')?>
           <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
+            <img src="<?= base_url()?>/assets/img/logo-big.png">
           </div> -->
         </a>
       </div>
       <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li>
-              <a href="<?= base_url('admin')?>">
-              <i class="nc-icon nc-bank"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li>
+            <ul class="nav">
+            <li>
+                <a href="<?= base_url('admin')?>">
+                  <i class="nc-icon nc-bank"></i>
+                  <p>Dashboard</p>
+                </a>
+              </li>
+
+              <li>
                 <a href="<?= base_url('admin/tabel_barangmasuk')?>">
-                  <i class="nc-icon nc-pin-3"></i>
+                  <i class="nc-icon nc-diamond"></i>
                   <p>Data Barang Masuk</p>
                 </a>
-          </li>
-          <li>
+              </li>
+              
+              <li>
                 <a href="<?= base_url('admin/tabel_barangkeluar')?>">
                   <i class="nc-icon nc-pin-3"></i>
                   <p>Data Barang Keluar</p>
                 </a>
-          </li>
-          <li>
+              </li>
+                 <li class="active">
                 <a href="<?php echo base_url('admin/tabel_barang')?>">
                   <i class="nc-icon nc-tile-56"></i>
                   <p>Data Jenis Barang</p>
                 </a>
               </li>
-          <li>
+              <li>
+                <a href="<?= base_url('admin/tabel_satuan')?>">
+                  <i class="nc-icon nc-bell-55"></i>
+                  <p>Data satuan</p>
+                </a>
+              </li>
+              <li>
                 <a href="<?php echo base_url('admin/profile')?>">
                   <i class="nc-icon nc-single-02"></i>
                   <p>User Profile</p>
                 </a>
-          </li>
-          <li>
+              </li>
+              <li>
                 <a href="<?php echo base_url('admin/users')?>">
                   <i class="nc-icon nc-tile-56"></i>
                   <p>Admin</p>
                 </a>
-          </li>
-          <li>
-            <a href="<?php echo base_url('admin/profil')?>">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>profil</p>
-            </a>
-          </li>
-          <li class="active ">
-            <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Tambah Data Satuan</p>
-            </a>
-          </li>
-        </ul>
-      </div>
+              </li>
+              
+            </ul>
+          </div>
     </div>
     <div class="main-panel">
       <!-- Navbar -->
@@ -159,78 +154,109 @@
       <div class="content">
         <div class="row">
           <div class="col-md-12">
-            <div class="card card-user">
+            <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Tambah Data satuan</h5>
+                <h4 class="card-title">Tabel Barang</h4>
+                </div>
+              <div class="container-fluid">
+
+              <?php if($this->session->flashdata('msg_berhasil')){ ?>
+                <div class="alert alert-success alert-dismissible" style="width:100%">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
+               </div>
+              <?php } ?>
+
+              <a href="<?=base_url('admin/form_barang')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Jenis Barang</a>
               </div>
               <div class="card-body">
-              <form action="<?=base_url('admin/proses_satuan_update')?>" role="form" method="post">
-
-              <!-- validation -->
-              <?php if(validation_errors()){ ?>
-              <div class="alert alert-warning alert-dismissible">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
-             </div>
-            <?php } ?>
-
-                  <div class="row">
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                      <?php foreach($data_satuan as $d){ ?>
-                      <input type="hidden" name="id_satuan" value="<?=$d->id_satuan?>">
-                      <label for="kode_satuan" >Kode Satuan</label>
-                      <input type="text" required name="kode_satuan" class="form-control" id="kode_satuan" placeholder="Kode Satuan" value="<?=$d->kode_satuan?>">
-                      </div>
-                    </div>
-                    <div class="col-md-6 pl-1">
-                      <div class="form-group">
-                      <label for="nama_satuan">Nama Satuan</label>
-                        <input type="text" required name="nama_satuan" class="form-control" id="nama_satuan" placeholder="Nama Satuan" value="<?=$d->nama_satuan?>">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="update ml-auto mr-auto">
-                          <button type="reset" name="btn_reset" class="btn btn-primary btn-round">Reset</button>
-                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Satuan</a>
-                          <button type="submit" class="btn btn-success btn-round"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
-                    </div>
-                  </div>    
-                  <?php } ?>   
-                </form>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <tr>
+                         <th>Id Barang</th>
+                        <th>Nama barang</th>
+                        <th>Qr Code</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                      </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <?php if(is_array($list_data)){ ?>
+                  <?php $no = 1;?>
+                  <?php include "phpqrcode/qrlib.php";?> 
+                  <?php foreach($list_data as $dd): ?>
+                    <td><?=$no?></td>
+                    <td><?=$dd->Nama_barang?></td>
+                    <td>
+                    <?php 
+                    $tempdir = "temp/"; 
+                    if (!file_exists($tempdir))   
+                     mkdir($tempdir);
+                    $isi_teks = $dd->Nama_barang;
+                    $filename = $isi_teks.".png";
+                    $quality = 'H'; //ada 4 pilihan, L (Low), M(Medium), Q(Good), H(High)
+                    $ukuran = 5; 
+                    $padding = 0;  
+                    QRCode::png($isi_teks,$tempdir.$filename,$quality,$ukuran,$padding);
+                    ?>
+                    <img width="100px" heigth="100px" src="<?=base_url('temp/'.$filename)?>">
+                    </td>
+                      <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/update_barang1/'.$dd->Id_barang)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/delete_barang1/'.$dd->Id_barang)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                  
+                </tr>
+              <?php $no++; ?>
+              <?php endforeach;?>
+              <?php }else { ?>
+                    <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+              <?php } ?>
+                </tbody>
+                    
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- <footer class="footer footer-black   ">
+        <div class="container-fluid">
+          <div class="row">
+            <nav class="footer-nav">
+              <ul>
+                <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
+                <li><a href="https://www.creative-tim.com/blog" target="_blank">Blog</a></li>
+                <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
+              </ul>
+            </nav>
+            <!-- <div class="credits ml-auto">
+              <span class="copyright">
+                © <script>
+                  document.write(new Date().getFullYear())
+                </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+              </span>
+            </div> -->
+          </div>
+        </div>
+      <!-- </footer> --> -->
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="<?=base_url()?>/assets/js/core/jquery.min.js"></script>
-  <script src="<?=base_url()?>/assets/js/core/popper.min.js"></script>
-  <script src="<?=base_url()?>/assets/js/core/bootstrap.min.js"></script>
-  <script src="<?=base_url()?>/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
-  <script src="<?=base_url()?>/assets/js/plugins/chartjs.min.js"></script>
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
-  <script src="<?=base_url()?>/assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="<?=base_url()?>/assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-  <script src="<?=base_url()?>/assets/demo/demo.js"></script>
-  <script type="text/javascript">
-      $(".form_datetime").datetimepicker({
-        format: 'dd/mm/yyyy',
-        autoclose: true,
-        todayBtn: true,
-        pickTime: false,
-        minView: 2,
-        maxView: 4,
-      });
-      </script>
+  <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+  <script src="../assets/demo/demo.js"></script>
 </body>
 
 </html>
