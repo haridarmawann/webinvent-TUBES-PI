@@ -373,7 +373,7 @@ class Admin extends CI_Controller{
   public function form_satuan()
   {
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/form_satuan/form_insert',$data);
+    $this->load->view('admin/form_satuan/form_insert_new',$data);
   }
 
   public function tabel_satuan()
@@ -389,7 +389,7 @@ class Admin extends CI_Controller{
     $where = array('id_satuan' => $uri);
     $data['data_satuan'] = $this->M_admin->get_data('tb_satuan',$where);
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/form_satuan/form_update',$data);
+    $this->load->view('admin/form_satuan/form_update_new',$data);
   }
 
   public function delete_satuan()

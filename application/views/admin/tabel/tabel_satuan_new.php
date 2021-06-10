@@ -76,12 +76,6 @@
                   <p>Admin</p>
                 </a>
               </li>
-              <li>
-                <a href="./typography.html">
-                  <i class="nc-icon nc-caps-small"></i>
-                  <p>Typography</p>
-                </a>
-              </li>
             </ul>
           </div>
     </div>
