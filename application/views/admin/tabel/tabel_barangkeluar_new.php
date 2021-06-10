@@ -189,15 +189,22 @@
                 <tr>
                   <?php if(is_array($list_data)){ ?>
                   <?php $no = 1;?>
+                  <?php include "phpqrcode/qrlib.php";?> 
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
-                    <td><?phpinclude "phpqrcode/qrlib.php"; //<-- LOKASI FILE UTAMA PLUGINNYA
+                    <td>
+                    <?php 
                     $tempdir = "temp/"; //<-- Nama Folder file QR Code kita nantinya akandisimpan
-                    if (!file_exists($tempdir))#kalau folder belum ada, maka buat.    mkdir($tempdir);
-                    $isi_teks = "Belajar QR Code itu asik";$namafile = "coba.png";$quality = 'H'; //ada 4 pilihan, L (Low), M(Medium), Q(Good), H(High)$ukuran = 5; //batasan 1 paling kecil, 10 paling besar
-                    $padding = 0;QRCode::png($isi_teks,$tempdir.$namafile,$quality,$ukuran,$padding);
+                    if (!file_exists($tempdir))#kalau folder belum ada, maka buat.   
+                     mkdir($tempdir);
+                    $isi_teks = $dd->id_transaksi;
+                    $filename = $isi_teks.".png";
+                    $quality = 'H'; //ada 4 pilihan, L (Low), M(Medium), Q(Good), H(High)
+                    $ukuran = 5; //batasan 1 paling kecil, 10 paling besar
+                    $padding = 0;  
+                    QRCode::png($isi_teks,$tempdir.$filename,$quality,$ukuran,$padding);
                     ?>
-                    <img width="100px" heigth="100px" src="https://fv2-3.failiem.lv/thumb_show.php?i=h5k57qnja&view">
+                    <img width="100px" heigth="100px" src="<?=base_url('temp/'.$filename)?>">
                       </td>
                     <td><?=$dd->id_transaksi?></td>
                     <td><?=$dd->tanggal_masuk?></td>
