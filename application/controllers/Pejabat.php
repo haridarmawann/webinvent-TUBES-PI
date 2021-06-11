@@ -10,7 +10,7 @@ class Pejabat extends CI_Controller{
   }
 
   public function index(){
-    if($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 1){
+    if($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 2){
       $data['avatar'] = $this->M_Pejabat->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
       $data['stokBarangMasuk'] = $this->M_Pejabat->sum('tb_barang_masuk','jumlah');
       $data['stokBarangKeluar'] = $this->M_Pejabat->sum('tb_barang_keluar','jumlah');      
