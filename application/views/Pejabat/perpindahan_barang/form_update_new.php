@@ -1,4 +1,17 @@
+<!--
+=========================================================
+* Paper Dashboard 2 - v2.0.1
+=========================================================
 
+* Product Page: https://www.creative-tim.com/product/paper-dashboard-2
+* Copyright 2020 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,10 +28,10 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="<?=base_url()?>/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <link href="<?= base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="<?= base_url()?>/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="<?=base_url()?>/assets/demo/demo.css" rel="stylesheet" />
+  <link href="<?= base_url()?>/assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -27,7 +40,7 @@
       <div class="logo">
         <a href="https://www.creative-tim.com" class="simple-text logo-mini">
           <div class="logo-image-small">
-            <img src="<?=base_url()?>/assets/img/logo-small.png">
+            <img src="<?= base_url()?>/assets/img/logo-small.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
@@ -77,15 +90,15 @@
                 </a>
           </li>
           <li>
-            <a href="<?php echo base_url('admin/profil')?>">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>profil</p>
-            </a>
-          </li>
-          <li class="active ">
+                <a href="<?php echo base_url('admin/profile')?>">
+                  <i class="nc-icon nc-single-02"></i>
+                  <p>User Profile</p>
+                </a>
+            </li>
+          <li class="active">
             <a href="./typography.html">
               <i class="nc-icon nc-caps-small"></i>
-              <p>Update Data User</p>
+              <p>Tambah Data keluar</p>
             </a>
           </li>
         </ul>
@@ -103,7 +116,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Dashboard</a>
+            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -161,72 +174,93 @@
           <div class="col-md-12">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">Tambah Data User</h5>
+                <h5 class="card-title">Tambah Data Keluar</h5>
               </div>
               <div class="card-body">
-              <form action="<?=base_url('admin/proses_update_user')?>" role="form" method="post">
+                <form action="<?=base_url('admin/proses_data_keluar')?>" role="form" method="post">
 
-              <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                <div class="alert alert-success alert-dismissible" style="width:91%">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
-               </div>
-              <?php } ?>
-
-              <?php if(validation_errors()){ ?>
-              <div class="alert alert-warning alert-dismissible">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
-             </div>
-            <?php } ?>
+                <!-- Validation Form --> 
+                <?php if(validation_errors()){ ?>
+                    <div class="alert alert-warning alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
+                    </div>
+                <?php } ?>
 
                   <div class="row">
-                    <div class="col-md-12 px-5">
+                    <div class="col-md-5 pr-1">
+                      <div class="form-group">  
                       <?php foreach($list_data as $d){ ?>
-                      <input type="hidden" name="id" value="<?=$d->id?>">
+                        <label for="id_transaksi">ID Transaksi</label>
+                        <input type="text" name="id_transaksi" class="form-control" readonly="readonly" value="<?=$d->id_transaksi?>">
+                      </div>
+                    </div>  
+                    <div class="col-md-3 px-1">
                       <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" required="" class="form-control" id="username" value="<?=$d->username?>">
+                      <label for="tanggal">Tanggal Masuk</label>
+                      <input type="text" name="tanggal"class="form-control" readonly="readonly" value="<?=$d->tanggal?>">
                       </div>
                     </div>
-
-                    <div class="col-md-12 px-5">
-                      <div class="form-group" style="display:block;">
-                        <label for="email" >Email</label>
-                        <input type="text" name="email" class="form-control" id="email" required="" value="<?=$d->email?>">
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
+                      <label for="tanggal_keluar">Tanggal Keluar</label>
+                      <input type="date" name="tanggal_keluar" class="form-control form_datetime" required placeholder="Klik Disini">
                       </div>
                     </div>
-
-                    <div class="col-md-12 px-5">
-                    <div class="form-group" style="display:block;">
-                        <label for="role" >Role</label>
-                        <select class="form-control" name="role">
-                          <?php if($d->role == 1){ ?>
-                  <option value="1" selected="">Admin Gudang</option>
-                  <option value="2">Kepala Gudang</option>
-                  <option value="0">Staff Gudang</option>
-                  <?php }else{ ?>
-                  <option value="1">Admin Gudang</option>
-                  <option value="2">Kepala Gudang</option>
-                  <option value="0" selected="">Staff Gudang</option>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                      <label for="lokasi">Lokasi</label>
+                      <input type="text" name="lokasi" class="form-control" readonly="readonly" value="<?=$d->lokasi?>">
+                      </div>
+                    </div>
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                      <label for="kode_barang">Kode Barang / Barcode</label>
+                      <input type="text" name="kode_barang" readonly="readonly" class="form-control" id="kode_barang" value="<?=$d->kode_barang?>">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                      <label for="nama_Barang">Nama Barang</label>
+                      <input type="text" name="nama_barang" readonly="readonly" class="form-control" id="nama_Barang" value="<?=$d->nama_barang?>">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                      <label for="satuan">Satuan</label>
+                      <select class="form-control" name="satuan">
+                        <?php foreach($list_satuan as $s){?>
+                        <?php if($d->satuan == $s->nama_satuan){?>
+                          <option value="<?=$d->satuan?>" selected=""><?=$d->satuan?></option>
+                        <?php }else{?>
+                          <option value="<?=$s->kode_satuan?>"><?=$s->nama_satuan?></option>
+                        <?php } ?>
+                        <?php } ?>
+                      </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4 px-1">
+                      <div class="form-group">
+                      <label for="jumlah">Jumlah</label>
+                      <input type="number" name="jumlah"  class="form-control" id="jumlah" max="<?=$d->jumlah?>" value="<?=$d->jumlah?>">
+                      </div>
+                    </div>
                   <?php } ?>
-                        </select>
-                    </div>
-                    </div>
-                    <?php } ?>
-                    <?php if(isset($token_generate)){ ?>
-                     <input type="hidden" name="token"  class="form-control" value="<?= $token_generate?>">
-                      <?php }else {
-                      redirect(base_url('admin/form_user'));
-                       }?>
+                </div>  
 
-                 
-                      <div class="update ml-auto mr-auto">
-                          <button type="reset" name="btn_reset" class="btn btn-primary btn-round">Reset</button>
-                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Satuan</a>
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
+                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_barangkeluar')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Barang</a>
                           <button type="submit" class="btn btn-success btn-round"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
                     </div>
-                  </div>       
+                  </div>
+                  
                 </form>
               </div>
             </div>
@@ -236,29 +270,19 @@
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="<?=base_url()?>/assets/js/core/jquery.min.js"></script>
-  <script src="<?=base_url()?>/assets/js/core/popper.min.js"></script>
-  <script src="<?=base_url()?>/assets/js/core/bootstrap.min.js"></script>
-  <script src="<?=base_url()?>/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="<?= base_url()?>/assets/js/core/jquery.min.js"></script>
+  <script src="<?= base_url()?>/assets/js/core/popper.min.js"></script>
+  <script src="<?= base_url()?>/assets/js/core/bootstrap.min.js"></script>
+  <script src="<?= base_url()?>/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chart JS -->
-  <script src="<?=base_url()?>/assets/js/plugins/chartjs.min.js"></script>
+  <script src="<?= base_url()?>/assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
-  <script src="<?=base_url()?>/assets/js/plugins/bootstrap-notify.js"></script>
+  <script src="<?= base_url()?>/assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="<?=base_url()?>/assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-  <script src="<?=base_url()?>/assets/demo/demo.js"></script>
-  <script type="text/javascript">
-      $(".form_datetime").datetimepicker({
-        format: 'dd/mm/yyyy',
-        autoclose: true,
-        todayBtn: true,
-        pickTime: false,
-        minView: 2,
-        maxView: 4,
-      });
-      </script>
+  <script src="<?= base_url()?>/assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+  <script src="<?= base_url()?>/assets/demo/demo.js"></script>
 </body>
 
 </html>

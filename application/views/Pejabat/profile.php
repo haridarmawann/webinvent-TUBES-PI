@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Profil Pengguna</title>
+  <title>AdminLTE 2 | User Profile</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -24,243 +24,152 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-    <style type="text/css">
-    body, html {
-      height: auto;
-    }
-      .sidebar-toggle {
-        color: #b2c20a;
-        transition: 0.5s;
-      }
-      .sidebar-toggle:hover{
-        color: white;
-      }
-      .navbar-nav {
-        color: #b2c20a;
-        transition: 0.5s;
-      }
-      .hidden-xs{
-        color: #b2c20a;
-        transition: 0.5s;
-      }
-      #warna {
-        color: #b2c20a;
-      }
-      #warna:hover {
-        color: #057d2d;
-        background-color: #b2c20a ;
-        border-right: 1px solid #057d2d;
-      }
-      }
-    </style>
+
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-green sidebar-mini">
-<div class="wrapper"> 
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
 
-  <header class="main-header" style="background-color: #057d2d; color: #b2c20a">
-    <!- Logo -->
-    <a href="<?=base_url('Pejabat')?>" class="logo" style="background-color: #b2c20a">
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="<?php echo base_url('Pejabat')?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini" style="color: #057d2d"><b>KST</b></span>
+      <span class="logo-mini"><b>P</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg" style="color: #057d2d"><b>Menu</b></span>
+      <span class="logo-lg"><b>Pejabat</b>LTE</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" style="color: #b2c20a;" data-toggle="push-menu" role="button" >
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </a>
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu" style="background-color: #057d2d">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="warna">
-              <!-- <?php foreach($avatar as $a){ ?>
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <?php foreach($avatar as $a){ ?>
               <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="user-image" alt="User Image">
               <?php } ?>
-            -->
-              <span ><b><?=$this->session->userdata('name')?></b></span>
+              <span class="hidden-xs"><?=$this->session->userdata('name')?></span>
             </a>
-            <ul class="dropdown-menu" style="background-color: #b2c20a">
+            <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <!-- <?php foreach($avatar as $a){ ?>
+                <?php foreach($avatar as $a){ ?>
                 <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
-                <?php } ?> -->
-
-                <p style="color: #057d2d;">
-                  <b><?=$this->session->userdata('name')?></b>
-                  <small style="color: #057d2d">Last Login : <?=$this->session->userdata('last_login')?></small>
+                <?php } ?>
+                <p>
+                  <?=$this->session->userdata('name')?> - Web Developer
+                  <small>Last Login : <?=$this->session->userdata('last_login')?></small>
                 </p>
               </li>
-              <!-- Menu Body -->
-              <!-- <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!- /.row -->
-              </li>
               <!-- Menu Footer-->
-              <li class="user-footer" style="background-color: #057d2d">
-                <div class="pull-left" >
-                  <a href="<?=base_url('Pejabat/profile')?>" class="btn btn-warning btn-flat"><i class="fa fa-gear" aria-hidden="true"></i> Profile</a>
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="<?= base_url('Pejabat/profile'); ?>" class="btn btn-default btn-flat"><i class="fa fa-cogs" aria-hidden="true"></i> Profile</a>
                 </div>
-                <div class="pull-right" >
-                  <a href="<?= base_url('Pejabat/sigout'); ?>" class="btn btn-danger btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
+                <div class="pull-right">
+                  <a href="<?= base_url('Pejabat/signout'); ?>" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
                 </div>
               </li>
             </ul>
           </li>
-          <!-- Control Sidebar Toggle Button -->
         </ul>
       </div>
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar" style="background-color: #057d2d ; color: #b2c20a;">
+  <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
-        <div class="pull-left image" style="margin-bottom:50px">
-          <!-- <?php foreach($avatar as $a){ ?>
+        <div class="pull-left image">
+          <?php foreach($avatar as $a){ ?>
           <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
-          <?php } ?> -->
+          <?php } ?>
         </div>
         <div class="pull-left info">
           <p><?=$this->session->userdata('name')?></p>
-          <a href="#" style="color: #057d2d ; background-color: #b2c20a;">&nbsp;
-            <i class="fa fa-circle text-success" style="color: #057d2d"></i><b> Online </b></a>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <!-- search form -->
-
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header" style="border-bottom: 3px solid #b2c20a; font-size: 14px;"><b>Menu Utama</b></li>
-
+        <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="<?php echo base_url('Pejabat')?>" id="warna">
-            <i class="fa fa-home"></i> <span>Dashboard</span>
+          <a href="<?= base_url('admin')?>">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               <!-- <i class="fa fa-angle-left pull-right"></i> -->
             </span>
           </a>
           <!-- <ul class="treeview-menu">
-            <li class="active"><a href="<?= base_url('admin') ?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li><a href="<?php echo base_url()?>assets/web_admin/index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li><a href="<?php echo base_url('admin')?>"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul> -->
         </li>
-        <!-- <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-          </ul>
-        </li> -->
-        <!-- <li>
-          <a href="pages/widgets.html">
-            <i class="fa fa-th"></i> <span>Widgets</span>
-            <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
-            </span>
-          </a>
-        </li>
+
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-pie-chart"></i>
-            <span>Charts</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-          </ul>
-        </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-laptop"></i>
-            <span>UI Elements</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-            <li><a href="<?php echo base_url()?>assets/web_admin/pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-          </ul>
-        </li> -->
-        <li class="treeview">
-          <a href="#" id="warna">
             <i class="fa fa-edit"></i> <span>Forms</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
           </a>
-          <ul class="treeview-menu" >
-            <li><a href="<?php echo base_url('Pejabat/form_barangmasuk')?>" id="warna"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
+          <ul class="treeview-menu">
+            <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
+            <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li>
           </ul>
         </li>
         <li class="treeview">
-          <a href="#" id="warna">
+          <a href="#">
             <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Pejabat/tabel_barangmasuk') ?>" id="warna"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
-            <li><a href="<?= base_url('Pejabat/tabel_barangkeluar')?>" id="warna"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li><a href="<?= base_url('user/barang_disetujui')?>" id="warna"><i class="fa fa-circle-o"></i> Tabel Barang Persetujuan</a></li>
+            <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
+            <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
+            <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
           </ul>
+        </li>
+        <li class="header">LABELS</li>
+        <li class="active">
+          <a href="<?php echo base_url('admin/profile')?>">
+         <i class="fa fa-cogs" aria-hidden="true"></i> <span>Profile</span></a>
+        </li>
         <li>
-          <a href="<?php echo base_url('Pejabat/setting')?>" id="warna">
-         <i class="fa fa-user" aria-hidden="true"></i> <span>Profile</span></a>
+          <a href="<?php echo base_url('admin/users')?>">
+         <i class="fa fa-fw fa-users" aria-hidden="true"></i> <span>Users</span></a>
         </li>
       </ul>
-     
+
     </section>
     <!-- /.sidebar -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper" style="background-color: #b2c20a;">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <ol class="breadcrumb" style="background-color: #EEF2CE; color: black;">
-        <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
-        <li class="active">Edit Profile</li>
+    <section class="content-header">
+      <h1>
+        User Profile
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="<?=base_url('admin')?>"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?=base_url('admin/profile')?>" class="active">Profile</a></li>
       </ol>
-    <section class="content-header" style="color: #057d2d; margin-bottom: 5px; margin-top: -40px;">
-      <h2>Profil Pengguna</h2>
     </section>
 
     <!-- Main content -->
@@ -269,15 +178,15 @@
       <div class="row">
         <div class="col-md-3">
 
-          <!-- Profile Image 
+          <!-- Profile Image -->
           <div class="box box-primary">
-            <div class="box-body box-profile" style="border-top: 0px; background-color: #EEF2CE">
+            <div class="box-body box-profile">
               <?php foreach($avatar as $a){ ?>
               <img class="profile-user-img img-responsive img-circle" src="<?php echo base_url()?>assets/upload/user/img/<?= $a->nama_file?>" alt="User profile picture">
-              <?php } ?> 
+              <?php } ?>
               <h3 class="profile-username text-center"><?=$this->session->userdata('name')?></h3>
 
-              <p class="text-muted text-center">Administrator Bagian Gudang</p><br>
+              <p class="text-muted text-center">Software Engineer</p><br>
 
               <?php if($this->session->flashdata('msg_berhasil_gambar')){ ?>
                 <div class="alert alert-success alert-dismissible">
@@ -301,7 +210,6 @@
             <?php } ?>
 
             </div>
-          -->
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
@@ -312,10 +220,10 @@
         </div>
         <!-- /.col -->
         <div class="col-md-9">
-          <div class="nav-tabs-custom" style="background-color: #EEF2CE">
+          <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#settings" data-toggle="tab" >Change Password</a></li>
-              <!-- <li><a href="#picture" data-toggle="tab">Change Picture</a></li> -->
+              <li class="active"><a href="#settings" data-toggle="tab">Change Password</a></li>
+              <li><a href="#picture" data-toggle="tab">Change Picture</a></li>
             </ul>
             <div class="tab-content">
 
@@ -323,10 +231,10 @@
 
               <!-- /.tab-pane -->
 
-              <!-- <div class="tab-pane" id="picture">
+              <div class="tab-pane" id="picture">
                 <form class="form-horizontal" action="<?=base_url('admin/proses_gambar_upload')?>" method="post" enctype="multipart/form-data">
 
-                  <div class="form-group" style="margin-top: 20px">
+                  <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">Open Picture</label>
 
                     <div class="col-sm-10">
@@ -341,15 +249,14 @@
 
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp; Submit</button>
+                      <button type="submit" class="btn btn-success"><i class="fa fa-send" aria-hidden="true"></i>&nbsp;Submit</button>
                     </div>
                   </div>
                 </form>
               </div>
-            -->
 
               <div class="tab-pane active" id="settings">
-                <form class="form-horizontal" action="<?=base_url('user/proses_new_password')?>" method="post">
+                <form class="form-horizontal" action="<?=base_url('admin/proses_new_password')?>" method="post">
 
                   <?php if($this->session->flashdata('msg_berhasil')){ ?>
                     <div class="alert alert-success alert-dismissible">
@@ -365,7 +272,7 @@
                  </div>
                 <?php } ?>
 
-                  <div class="form-group" style="margin-top: 20px">
+                  <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">Username</label>
 
                     <div class="col-sm-10">
@@ -380,17 +287,17 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="new_password" class="col-sm-2 control-label">Password Baru</label>
+                    <label for="new_password" class="col-sm-2 control-label">New Password</label>
 
                     <div class="col-sm-10">
-                      <input type="password" name="new_password" class="form-control" id="new_password" placeholder="New Password" required="">
+                      <input type="password" name="new_password" class="form-control" id="new_password" placeholder="New Password">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="confirm_new_password" class="col-sm-2 control-label">Konfirmasi Password</label>
+                    <label for="confirm_new_password" class="col-sm-2 control-label">Confirm New Password</label>
 
                     <div class="col-sm-10">
-                      <input type="password" name="confirm_new_password" class="form-control" id="confirm_new_password" placeholder="Confirm New Password" required="">
+                      <input type="password" name="confirm_new_password" class="form-control" id="confirm_new_password" placeholder="Confirm New Password">
                     </div>
                   </div>
                   <?php if(isset($token_generate)){ ?>
@@ -401,7 +308,7 @@
 
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp; Submit</button>
+                      <button type="submit" class="btn btn-success"><i class="fa fa-send" aria-hidden="true"></i>&nbsp;Submit</button>
                     </div>
                   </div>
                 </form>
@@ -419,6 +326,14 @@
     </section>
     <!-- /.content -->
   </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; <?=date('Y')?></strong>
+    
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

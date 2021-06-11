@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Barang Keluar</title>
+  <title>Web Gudang | Data Barang Masuk</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -25,52 +25,25 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-    <style type="text/css">
-    body, html {
-      height: auto;
-    }
-      .sidebar-toggle {
-        color: #b2c20a;
-        transition: 0.5s;
-      }
-      .sidebar-toggle:hover{
-        color: white;
-      }
-      .navbar-nav {
-        color: #b2c20a;
-        transition: 0.5s;
-      }
-      .hidden-xs{
-        color: #b2c20a;
-        transition: 0.5s;
-      }
-      #warna {
-        color: #b2c20a;
-      }
-      #warna:hover {
-        color: #057d2d;
-        background-color: #b2c20a ;
-        border-right: 1px solid #057d2d;
-      }
-    </style>
+
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-green sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <header class="main-header" style="background-color: #057d2d; color: #b2c20a">
+  <header class="main-header">
     <!-- Logo -->
-    <a href="<?=base_url('Pejabat')?>" class="logo" style="background-color: #b2c20a">
+    <a href="<?php echo base_url('admin')?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini" style="color: #057d2d"><b>KST</b></span>
+      <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg" style="color: #057d2d"><b>Menu</b></span>
+      <span class="logo-lg"><b>Admin</b>LTE</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" style="color: #b2c20a;" data-toggle="push-menu" role="button">
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -78,34 +51,35 @@
       </a>
 
       <div class="navbar-custom-menu">
-         <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu" style="background-color: #057d2d">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="warna">
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <?php foreach($avatar as $a){ ?>
-              <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="user-image" alt="User Image">
-              <?php } ?>
-              <span ><b><?=$this->session->userdata('name')?></b></span>
+                 <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="user-image" alt="User Image">
+              <?php } ?>              
+              <span class="hidden-xs"><?=$this->session->userdata('name')?></span>
             </a>
-            <ul class="dropdown-menu" style="background-color: #b2c20a">
+            <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <?php foreach($avatar as $a){ ?>
-                <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
+                  <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
                 <?php } ?>
-
-                <p style="color: #057d2d;">
-                  <b><?=$this->session->userdata('name')?></b>
-                  <small style="color: #057d2d">Last Login : <?=$this->session->userdata('last_login')?></small>
+                <p>
+                  <?=$this->session->userdata('name')?> - Web Developer
+                  <small>Last Login : <?=$this->session->userdata('last_login')?></small>
                 </p>
               </li>
+              <!-- Menu Body -->
+
               <!-- Menu Footer-->
-              <li class="user-footer" style="background-color: #057d2d">
-                <div class="pull-left" >
-                  <a href="<?=base_url('Pejabat/profile')?>" class="btn btn-warning btn-flat"><i class="fa fa-gear" aria-hidden="true"></i> Profile</a>
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat"><i class="fa fa-cogs" aria-hidden="true"></i> Profile</a>
                 </div>
-                <div class="pull-right" >
-                  <a href="<?= base_url('Pejabat/sigout'); ?>" class="btn btn-danger btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
+                <div class="pull-right">
+                  <a href="<?= base_url('admin/sigout')?>" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
                 </div>
               </li>
             </ul>
@@ -117,20 +91,19 @@
   </header>
   <!-- Left side column. contains the logo and sidebar -->
 
-  <aside class="main-sidebar" style="background-color: #057d2d ; color: #b2c20a;">
+  <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
           <?php foreach($avatar as $a){ ?>
-          <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
+            <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
           <?php } ?>
         </div>
         <div class="pull-left info">
           <p><?=$this->session->userdata('name')?></p>
-          <a href="#" style="color: #057d2d ; background-color: #b2c20a;">&nbsp;
-            <i class="fa fa-circle text-success" style="color: #057d2d"></i><b> Online </b></a>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
       <!-- search form -->
@@ -138,10 +111,10 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header" style="border-bottom: 3px solid #b2c20a; font-size: 14px;"><b>Menu Utama</b></li>
+        <li class="header">MAIN NAVIGATION</li>
         <li>
-          <a href="<?php echo base_url('Pejabat')?>" id="warna">
-            <i class="fa fa-home"></i> <span>Dashboard</span>
+          <a href="<?= base_url('admin')?>">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
               <!-- <i class="fa fa-angle-left pull-right"></i> -->
             </span>
@@ -153,51 +126,56 @@
         </li>
 
         <li class="treeview">
-          <a href="#" id="warna">
+          <a href="#">
             <i class="fa fa-edit"></i> <span>Forms</span>
             <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('Pejabat/form_barangmasuk')?>" id="warna"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
-            <li><a href="<?= base_url('Pejabat/form_satuan')?>" id="warna"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li>
+            <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
+            <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#" id="warna">
-            <i class="fa fa-table"></i> <span>Daftar</span>
+        <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?= base_url('Pejabat/tabel_barangmasuk')?>" id="warna"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
-            <li><a href="<?= base_url('Pejabat/tabel_barangkeluar')?>" id="warna"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
-            <li><a href="<?= base_url('Pejabat/tabel_satuan')?>" id="warna"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
-            <li><a href="<?= base_url('user/barang_disetujui')?>" id="warna"><i class="fa fa-circle-o"></i> Tabel Barang Persetujuan</a></li>
+            <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Barang Masuk</a></li>
+            <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Barang Keluar</a></li>
+            <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
           </ul>
         </li>
-        <li class="active">
-          <a href="<?php echo base_url('Pejabat/profile')?>" id="warna">
-         <i class="fa fa-user" aria-hidden="true" ></i> <span>Profile</span></a>
+        <li class="header">LABELS</li>
+        <li>
+          <a href="<?php echo base_url('admin/profile')?>">
+         <i class="fa fa-cogs" aria-hidden="true"></i> <span>Profile</span></a>
         </li>
         <li>
-          <a href="<?php echo base_url('Pejabat/users')?>" id="warna">
+          <a href="<?php echo base_url('admin/users')?>">
          <i class="fa fa-fw fa-users" aria-hidden="true"></i> <span>Users</span></a>
         </li>
       </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
+
   <!-- Content Wrapper. Contains page content -->
- <div class="content-wrapper" style="background-color: #b2c20a;">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <ol class="breadcrumb" style="background-color: #EEF2CE; color: black;">
-        <li><a href="#"><i class="fa fa-table"></i> Daftar</a></li>
+    <section class="content-header">
+      <h1>
+        Tambah Barang Keluar
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?=base_url('admin/tabel_barangmasuk')?>">Tables</a></li>
         <li class="active">Tambah Barang Keluar</li>
       </ol>
-    <section class="content-header" style="color: #057d2d; margin-bottom: 5px; margin-top: -40px;">
     </section>
 
     <!-- Main content -->
@@ -207,15 +185,14 @@
         <div class="col-md-12">
           <div class="container">
             <!-- general form elements -->
-          <div class="box box-primary" style="width:100%; background-color: #EEF2CE; color: #057d2d">
-           <div class="box-header" style="margin-top : 10px; border-bottom: 2px solid #057d2d; color: #057d2d">
-              <h1 class="box-title" style="font-size: 24px; font-family: fantasy;"><i class="fa fa-fw fa-cubes" aria-hidden="true"></i> 
-              Tambah Barang Keluar</h1>
+          <div class="box box-primary" style="width:94%;">
+            <div class="box-header with-border">
+              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Barang Keluar</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('Pejabat/proses_persetujuan_data')?>" role="form" method="post">
+            <form action="<?=base_url('admin/proses_data_keluar')?>" role="form" method="post">
 
               <?php if(validation_errors()){ ?>
               <div class="alert alert-warning alert-dismissible">
@@ -224,7 +201,7 @@
              </div>
             <?php } ?>
 
-              <div class="box-body" style="margin-left: 150px">
+              <div class="box-body">
                 <div class="form-group">
                   <?php foreach($list_data as $d){ ?>
                   <label for="id_transaksi" style="margin-left:220px;display:inline;">ID Transaksi</label>
@@ -232,11 +209,11 @@
                 </div>
                 <div class="form-group">
                   <label for="tanggal" style="margin-left:220px;display:inline;">Tanggal Masuk</label>
-                  <input type="text" name="tanggal" style="margin-left:66px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->tanggal_masuk?>">
+                  <input type="text" name="tanggal" style="margin-left:66px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->tanggal?>">
                 </div>
                 <div class="form-group">
                   <label for="tanggal_keluar" style="margin-left:220px;display:inline;">Tanggal Keluar</label>
-                  <input type="text" name="tanggal_keluar" style="margin-left:66px;width:20%;display:inline;"  required="" value="<?=$d->tanggal_keluar?>">
+                  <input type="text" name="tanggal_keluar" style="margin-left:66px;width:20%;display:inline;" class="form-control form_datetime" required="" placeholder="Klik Disini">
                 </div>
                 <div class="form-group" style="margin-bottom:40px;">
                   <label for="lokasi" style="margin-left:220px;display:inline;">Lokasi</label>
@@ -269,9 +246,9 @@
             <?php } ?>
               <!-- /.box-body -->
 
-              <div class="box-footer" style="width:93%; background-color: #EEF2CE;">
-                <a type="button" class="btn btn-danger" style="width:10%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                <button type="submit" style="width:20%;margin-left:500px;" class="btn btn-warning"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>&nbsp;&nbsp;&nbsp;
+              <div class="box-footer" style="width:93%;">
+                <a type="button" class="btn btn-default" style="width:10%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                <button type="submit" style="width:20%;margin-left:689px;" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>&nbsp;&nbsp;&nbsp;
               </div>
             </form>
           </div>
@@ -309,6 +286,13 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; <?=date('Y')?></strong>
+    
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

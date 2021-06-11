@@ -158,7 +158,7 @@ class Admin extends CI_Controller{
     $data['token_generate'] = $this->token_generate();
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->session->set_userdata($data);
-    $this->load->view('admin/form_users/form_insert',$data);
+    $this->load->view('admin/form_users/form_insert_new',$data);
   }
 
   public function update_user()

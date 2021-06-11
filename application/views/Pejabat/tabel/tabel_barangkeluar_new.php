@@ -38,49 +38,51 @@
       </div>
       <div class="sidebar-wrapper">
             <ul class="nav">
-              <li>
-                <a href="<?= base_url('admin')?>">
+            <li>
+                <a href="<?= base_url('Pejabat')?>">
                   <i class="nc-icon nc-bank"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
+              
               <li>
-                <a href="<?= base_url('admin/tabel_barangmasuk')?>">
+                <a href="<?= base_url('Pejabat/tabel_barangmasuk')?>">
                   <i class="nc-icon nc-diamond"></i>
                   <p>Data Barang Masuk</p>
                 </a>
               </li>
-              
-              <li>
-                <a href="<?= base_url('admin/tabel_barangkeluar')?>">
+
+              <li class="active">
+                <a href="<?= base_url('Pejabat/tabel_barangkeluar')?>">
                   <i class="nc-icon nc-pin-3"></i>
                   <p>Data Barang Keluar</p>
                 </a>
               </li>
               <li>
-                <a href="<?php echo base_url('admin/tabel_barang')?>">
+                <a href="<?php echo base_url('Pejabat/tabel_barang')?>">
                   <i class="nc-icon nc-tile-56"></i>
                   <p>Data Jenis Barang</p>
                 </a>
               </li>
               <li>
-                <a href="<?= base_url('admin/tabel_satuan')?>">
+                <a href="<?= base_url('Pejabat/tabel_satuan')?>">
                   <i class="nc-icon nc-bell-55"></i>
                   <p>Data satuan</p>
                 </a>
               </li>
               <li>
-                <a href="<?php echo base_url('admin/profile')?>">
+                <a href="<?php echo base_url('Pejabat/profile')?>">
                   <i class="nc-icon nc-single-02"></i>
                   <p>User Profile</p>
                 </a>
               </li>
-              <li class="active">
-                <a href="<?php echo base_url('admin/users')?>">
+              <li>
+                <a href="<?php echo base_url('Pejabat/users')?>">
                   <i class="nc-icon nc-tile-56"></i>
-                  <p>Admin</p>
+                  <p>Pejabat</p>
                 </a>
               </li>
+              
             </ul>
           </div>
     </div>
@@ -154,9 +156,12 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Table Satuan</h4>
-                </div>
+                <h4 class="card-title">Table Barang Keluar</h4>
+              </div>
+
               <div class="container-fluid">
+              
+
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
                 <div class="alert alert-success alert-dismissible" style="width:100%">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -164,44 +169,67 @@
                </div>
               <?php } ?>
 
-              <a href="<?=base_url('admin/form_user')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data</a>
+              <a href="<?=base_url('Pejabat/tabel_barangmasuk_new')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Keluar</a>
+              <a href="<?=base_url('report/barangKeluarManual')?>" style="margin-bottom:10px;" type="button" class="btn btn-danger" name="laporan_data"><i class="fa fa-file-text" aria-hidden="true"></i> Invoice Manual</a>
               </div>
               <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive">    
                   <table class="table">
                     <thead class=" text-primary">
                     <tr>
-                      <th>Username</th>
-                      <th>Email</th>
-                      <th>Role</th>
-                      <th>Last Login</th>
-                      <th>Update</th>
-                      <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <?php if(is_array($list_users)){ ?>
-                  <?php foreach($list_users as $dd): ?>
-                    <td><?=$dd->username?></td>
-                    <td><?=$dd->email?></td>
-                        <?php if($dd->role == 1){ ?>
-                    <td>Admin </td>
-                    <?php } else if($dd->role == 2) {?>
-                    <td>Pejabat</td>
-                    <?php } else{?>
-                    <td>user</td>
-                    <?php }?>
-                    <td><?=$dd->last_login?></td>
-                    <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/update_user/'.$dd->id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/proses_delete_user/'.$dd->id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                  <th>No</th>
+                  <th>QrCode</th>
+                  <th>ID Transaksi</th>
+                  <th>Tanggal Masuk</th>
+                  <th>Tanggal Keluar</th>
+                  <th>Lokasi</th>
+                  <th>Kode Barang</th>
+                  <th>Nama Barang</th>
+                  <th>Satuan</th>
+                  <th>Jumlah</th>
+                  <th>Status</th>
+                  <th>Invoice</th>
+                  <!-- <th></th> -->
                 </tr>
+                    </thead>
+                    <tbody>
+                <tr>
+                  <?php if(is_array($list_data)){ ?>
+                  <?php $no = 1;?>
+                  <?php include "phpqrcode/qrlib.php";?> 
+                  <?php foreach($list_data as $dd): ?>
+                    <td><?=$no?></td>
+                    <td>
+                    <?php 
+                    $tempdir = "temp/"; //<-- Nama Folder file QR Code kita nantinya akandisimpan
+                    if (!file_exists($tempdir))#kalau folder belum ada, maka buat.   
+                     mkdir($tempdir);
+                    $isi_teks = $dd->id_transaksi;
+                    $filename = $isi_teks.".png";
+                    $quality = 'H'; //ada 4 pilihan, L (Low), M(Medium), Q(Good), H(High)
+                    $ukuran = 5; //batasan 1 paling kecil, 10 paling besar
+                    $padding = 0;  
+                    QRCode::png($isi_teks,$tempdir.$filename,$quality,$ukuran,$padding);
+                    ?>
+                    <img width="100px" heigth="100px" src="<?=base_url('temp/'.$filename)?>">
+                      </td>
+                    <td><?=$dd->id_transaksi?></td>
+                    <td><?=$dd->tanggal_masuk?></td>
+                    <td><?=$dd->tanggal_keluar?></td>
+                    <td><?=$dd->lokasi?></td>
+                    <td><?=$dd->kode_barang?></td>
+                    <td><?=$dd->nama_barang?></td>
+                    <td><?=$dd->satuan?></td>
+                    <td><?=$dd->jumlah?></td>
+                    <td> <a type="button" href="<?=base_url('Pejabat/tabel_barang_keluar/'.$dd->id_transaksi)?>" class="btn btn-info" style="width:100%"  name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Setujui</a></td>
+                    <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('Pejabat/tabel_barang_masuk/'.$dd->id_transaksi.'/'.$dd->tanggal_keluar)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                </tr>
+              <?php $no++; ?>
               <?php endforeach;?>
               <?php }else { ?>
                     <td colspan="7" align="center"><strong>Data Kosong</strong></td>
               <?php } ?>
-                </tbody>
-                    
+                </tbody>                  
                   </table>
                 </div>
               </div>
