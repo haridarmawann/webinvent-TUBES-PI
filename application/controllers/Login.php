@@ -11,7 +11,7 @@ class Login extends CI_Controller {
 	{
 		    $data['token_generate'] = $this->token_generate();
 			$this->session->set_userdata($data);
-			$this->load->view('login/login',$data);
+			$this->load->view('login/login_new',$data);
 	}
 
 	public function token_generate(){
