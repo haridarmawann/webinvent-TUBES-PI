@@ -71,7 +71,12 @@ Coded by www.creative-tim.com
                   <p>Data Barang Keluar</p>
                 </a>
           </li>
-
+          <li>
+                <a href="<?php echo base_url('admin/tabel_barang')?>">
+                  <i class="nc-icon nc-tile-56"></i>
+                  <p>Data Jenis Barang</p>
+                </a>
+              </li>
           <li>
                 <a href="<?php echo base_url('admin/profile')?>">
                   <i class="nc-icon nc-single-02"></i>

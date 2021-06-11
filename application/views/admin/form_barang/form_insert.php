@@ -83,9 +83,9 @@
             </a>
           </li>
           <li class="active ">
-            <a href="./typography.html">
+            <a href="#">
               <i class="nc-icon nc-caps-small"></i>
-              <p>Tambah Data User</p>
+              <p>Tambah Data Jenis Barang</p>
             </a>
           </li>
         </ul>
@@ -161,73 +161,37 @@
           <div class="col-md-12">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">Tambah Data User</h5>
+                <h5 class="card-title">Tambah Data Jenis Barang</h5>
               </div>
               <div class="card-body">
-              <form action="<?=base_url('admin/proses_tambah_user')?>" role="form" method="post">
+              <form action="<?=base_url('admin/proses_barang_insert')?>" role="form" method="post">
 
-                <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                  <div class="alert alert-success alert-dismissible" style="width:91%">
-                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                      <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
-                </div>
-                <?php } ?>
-
-                <?php if(validation_errors()){ ?>
-                <div class="alert alert-warning alert-dismissible">
+              <!-- validation -->
+              <?php if($this->session->flashdata('msg_berhasil')){ ?>
+                <div class="alert alert-success alert-dismissible" style="width:91%">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
-                </div>
-                <?php } ?>
+                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
+               </div>
+              <?php } ?>
 
-                  <div class="row">
+              <?php if(validation_errors()){ ?>
+              <div class="alert alert-warning alert-dismissible">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
+             </div>
+            <?php } ?>
                     <div class="col-md-12 px-5">
                       <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+                      <label for="nama_barang">Jenis barang</label>
+                      <input type="text" name="Nama_barang" class="form-control" id="nama_barang" placeholder="Jenis Barang">
                       </div>
                     </div>
+                  </div>
 
-                    <div class="col-md-12 px-5">
-                      <div class="form-group" style="display:block;">
-                        <label for="email" >Email</label>
-                        <input type="text" name="email" class="form-control" id="email" placeholder="Email">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12 px-5">
-                      <div class="form-group" style="display:block;">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12 px-5">
-                     <div class="form-group" >
-                        <label for="confirm_password" >Confirm Password</label>
-                        <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Confirm Password">
-                      </div>
-                    </div>
-                    <div class="col-md-12 px-5">
-                      <div class="form-group" >
-                        <label for="role">Role</label>
-                        <select class="form-control" name="role" style="width:11%;margin-right: 18px;">
-                          <option value="0" selected=""></option>
-                          <option value="0">User Biasa</option>
-                          <option value="1">User Admin</option>
-                        </select>
-                      </div>
-                    </div>
-                    <?php if(isset($token_generate)){ ?>
-                     <input type="hidden" name="token"  class="form-control" value="<?= $token_generate?>">
-                      <?php }else {
-                      redirect(base_url('admin/form_user'));
-                       }?>
-
-                 
-                      <div class="update ml-auto mr-auto">
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
                           <button type="reset" name="btn_reset" class="btn btn-primary btn-round">Reset</button>
-                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Satuan</a>
+                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_barang')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Jenis barang</a>
                           <button type="submit" class="btn btn-success btn-round"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
                     </div>
                   </div>       

@@ -15,10 +15,10 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="<?=base_url()?>/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
+  <link href="<?=base_url()?>/assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -27,7 +27,7 @@
       <div class="logo">
         <a href="https://www.creative-tim.com" class="simple-text logo-mini">
           <div class="logo-image-small">
-            <img src="../assets/img/logo-small.png">
+            <img src="<?=base_url()?>/assets/img/logo-small.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
@@ -85,7 +85,7 @@
           <li class="active ">
             <a href="./typography.html">
               <i class="nc-icon nc-caps-small"></i>
-              <p>Tambah Data User</p>
+              <p>Tambah Data Satuan</p>
             </a>
           </li>
         </ul>
@@ -161,76 +161,38 @@
           <div class="col-md-12">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">Tambah Data User</h5>
+                <h5 class="card-title">Tambah Jenis Barang</h5>
               </div>
               <div class="card-body">
-              <form action="<?=base_url('admin/proses_tambah_user')?>" role="form" method="post">
+              <form action="<?=base_url('admin/proses_barang_update')?>" role="form" method="post">
 
-                <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                  <div class="alert alert-success alert-dismissible" style="width:91%">
-                      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                      <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
-                </div>
-                <?php } ?>
-
-                <?php if(validation_errors()){ ?>
-                <div class="alert alert-warning alert-dismissible">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
-                </div>
-                <?php } ?>
+              <!-- validation -->
+              <?php if(validation_errors()){ ?>
+              <div class="alert alert-warning alert-dismissible">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
+             </div>
+            <?php } ?>
 
                   <div class="row">
-                    <div class="col-md-12 px-5">
+                    </div>
+                    <div class="col-md-6 pl-1">
                       <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+                         <?php foreach($data_barang as $d){ ?>
+                      <label for="Nama_barang">Nama barang</label>
+                        <input type="text" required name="Nama_barang" class="form-control" id="Nama_barang" placeholder="Nama barang" value="<?=$d->Nama_barang?>">
                       </div>
                     </div>
+                  </div>
 
-                    <div class="col-md-12 px-5">
-                      <div class="form-group" style="display:block;">
-                        <label for="email" >Email</label>
-                        <input type="text" name="email" class="form-control" id="email" placeholder="Email">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12 px-5">
-                      <div class="form-group" style="display:block;">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12 px-5">
-                     <div class="form-group" >
-                        <label for="confirm_password" >Confirm Password</label>
-                        <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Confirm Password">
-                      </div>
-                    </div>
-                    <div class="col-md-12 px-5">
-                      <div class="form-group" >
-                        <label for="role">Role</label>
-                        <select class="form-control" name="role" style="width:11%;margin-right: 18px;">
-                          <option value="0" selected=""></option>
-                          <option value="0">User Biasa</option>
-                          <option value="1">User Admin</option>
-                        </select>
-                      </div>
-                    </div>
-                    <?php if(isset($token_generate)){ ?>
-                     <input type="hidden" name="token"  class="form-control" value="<?= $token_generate?>">
-                      <?php }else {
-                      redirect(base_url('admin/form_user'));
-                       }?>
-
-                 
-                      <div class="update ml-auto mr-auto">
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
                           <button type="reset" name="btn_reset" class="btn btn-primary btn-round">Reset</button>
-                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Satuan</a>
+                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_barang')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List barang</a>
                           <button type="submit" class="btn btn-success btn-round"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
                     </div>
-                  </div>       
+                  </div>    
+                  <?php } ?>   
                 </form>
               </div>
             </div>
