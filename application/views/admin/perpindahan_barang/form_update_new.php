@@ -152,8 +152,6 @@ Coded by www.creative-tim.com
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="<?= base_url('admin/sigout')?>">Logout</a>
-                  <!-- <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a> -->
                 </div>
               </li>
               <!-- <li class="nav-item">
