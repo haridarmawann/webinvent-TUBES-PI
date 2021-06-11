@@ -83,13 +83,6 @@
                   <p>Data satuan</p>
                 </a>
               </li>
-            
-              <li>
-                <a href="<?php echo base_url('Pejabat/users')?>">
-                  <i class="nc-icon nc-settings"></i>
-                  <p>Pejabat</p>
-                </a>
-              </li>
             </ul>
           </div>
         </div>
@@ -167,7 +160,7 @@
                     <div class="row">
                       <div class="col-5 col-md-4">
                         <div class="icon-big text-center icon-warning">
-                          <i class="nc-icon nc-globe text-warning"></i>
+                          <i class="nc-icon nc-paper text-warning"></i>
                         </div>
                       </div>
                       <div class="col-7 col-md-8">
@@ -188,7 +181,7 @@
                   <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                    <a href="<?=base_url('Pejabat/tabel_barangmasuk_new')?>">
+                    <a href="<?=base_url('admin/tabel_barangmasuk')?>">
                       <i class="fa fa-refresh"></i>
                       Check Now
                       </a>
@@ -223,7 +216,7 @@
                   <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                    <a href="<?=base_url('Pejabat/tabel_barangkeluar')?>">
+                    <a href="<?=base_url('admin/tabel_barangkeluar')?>">
                       <i class="fa fa-calendar-o"></i>
                       More Info
                     </a>
@@ -254,7 +247,7 @@
                   <div class="card-footer ">
                     <hr>
                     <div class="stats">
-                    <a href="<?=base_url('Pejabat/users')?>">
+                    <a href="<?=base_url('admin/users')?>">
                       <i class="fa fa-clock-o"></i>
                       
                       More Info
@@ -269,13 +262,13 @@
                     <div class="row">
                       <div class="col-5 col-md-4">
                         <div class="icon-big text-center icon-warning">
-                          <i class="nc-icon nc-favourite-28 text-primary"></i>
+                          <i class="nc-icon nc-ruler-pencil text-primary"></i>
                         </div>
                       </div>
                       <div class="col-7 col-md-8">
                         <div class="numbers">
                           <p class="card-category">Jenis Barang</p>
-                          <p class="card-title">+45K<p>
+                          <p class="card-title"><p>
                         </div>
                       </div>
                     </div>

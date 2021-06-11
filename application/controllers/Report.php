@@ -22,11 +22,7 @@ class Report extends CI_Controller
     $pdf->SetSubject('Barang Keluar');
 
     //header Data
-<<<<<<< HEAD
-    // $pdf->SetHeaderData('unsada',30,'Laporan Data','Barang Keluar',array(203, 58, 44),array(0, 0, 0));
-=======
-    $pdf->SetHeaderData('',30,'Laporan Data','Barang Keluar',array(203, 58, 44),array(0, 0, 0));
->>>>>>> ada1f7f975a223db006ad0347d7e202679c822d5
+    // $pdf->SetHeaderData('',30,'Laporan Data','Barang Keluar',array(203, 58, 44),array(0, 0, 0));
     $pdf->SetFooterData(array(255, 255, 255), array(255, 255, 255));
 
 

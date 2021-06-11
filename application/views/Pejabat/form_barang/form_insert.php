@@ -70,25 +70,7 @@
                   <p>Data satuan</p>
                 </a>
               </li>
-              <li>
-                <a href="<?php echo base_url('admin/profile')?>">
-                  <i class="nc-icon nc-circle-10 "></i>
-                  <p>User Profile</p>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="nc-icon nc-settings"></i>
-                  <p>Admin</p>
-                </a>
-              </li>
-            </ul>
           </div>
-        </div>
-  
- 
-  
- 
     </div>
     <div class="main-panel">
       <!-- Navbar -->
@@ -190,7 +172,7 @@
                   <div class="row">
                     <div class="update ml-auto mr-auto">
                           <button type="reset" name="btn_reset" class="btn btn-primary btn-round">Reset</button>
-                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_barang')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Jenis barang</a>
+                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('Pejabat/tabel_barang')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Jenis barang</a>
                           <button type="submit" class="btn btn-success btn-round"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
                     </div>
                   </div>       

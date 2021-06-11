@@ -40,47 +40,47 @@
             <ul class="nav">
             <li>
                 <a href="<?= base_url('Pejabat')?>">
-                <i class="nc-icon nc-bank"></i>
+                  <i class="nc-icon nc-shop"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
 
               <li>
                 <a href="<?= base_url('Pejabat/tabel_barangmasuk')?>">
-                  <i class="nc-icon nc-diamond"></i>
+                  <i class="nc-icon nc-box-2"></i>
                   <p>Data Barang Masuk</p>
                 </a>
               </li>
               
               <li>
                 <a href="<?= base_url('Pejabat/tabel_barangkeluar')?>">
-                  <i class="nc-icon nc-pin-3"></i>
+                  <i class="nc-icon nc-delivery-fast"></i>
                   <p>Data Barang Keluar</p>
                 </a>
               </li>
               <li>
                 <a href="<?php echo base_url('Pejabat/tabel_barang')?>">
-                  <i class="nc-icon nc-tile-56"></i>
+                  <i class="nc-icon nc-bullet-list-67"></i>
                   <p>Data Jenis Barang</p>
                 </a>
               </li>
               <li>
                 <a href="<?= base_url('Pejabat/tabel_satuan')?>">
-                  <i class="nc-icon nc-bell-55"></i>
+                  <i class="nc-icon nc-box"></i>
                   <p>Data satuan</p>
                 </a>
               </li>
               <li class="active">
-                <a href="<?php echo base_url('Pejabat/profile')?>">
-                  <i class="nc-icon nc-single-02"></i>
+                <a href="#">
+                  <i class="nc-icon nc-circle-10"></i>
                   <p>User Profile</p>
                 </a>
               </li>
               <li>
                 <a href="<?php echo base_url('Pejabat/users')?>">
-                  <i class="nc-icon nc-tile-56"></i>
+                  <i class="nc-icon nc-settings"></i>
                   <p>Pejabat</p>
-              </a>
+                </a>
               </li>
             </ul>
           </div>

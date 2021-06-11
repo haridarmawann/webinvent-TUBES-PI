@@ -41,51 +41,35 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-              <a href="<?= base_url('admin')?>">
-              <i class="nc-icon nc-bank"></i>
+              <a href="<?= base_url('Pejabat')?>">
+              <i class="nc-icon nc-shop"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-                <a href="<?= base_url('admin/tabel_barangmasuk')?>">
-                  <i class="nc-icon nc-pin-3"></i>
+                <a href="<?= base_url('Pejabat/tabel_barangmasuk')?>">
+                  <i class="nc-icon nc-box-2"></i>
                   <p>Data Barang Masuk</p>
                 </a>
           </li>
           <li>
-                <a href="<?= base_url('admin/tabel_barangkeluar')?>">
-                  <i class="nc-icon nc-pin-3"></i>
+                <a href="<?= base_url('Pejabat/tabel_barangkeluar_new')?>">
+                  <i class="nc-icon nc-delivery-fast"></i>
                   <p>Data Barang Keluar</p>
                 </a>
           </li>
           <li>
-                <a href="<?php echo base_url('admin/tabel_barang')?>">
-                  <i class="nc-icon nc-tile-56"></i>
+                <a href="<?php echo base_url('Pejabat/tabel_barang')?>">
+                  <i class="nc-icon nc-bullet-list-67"></i>
                   <p>Data Jenis Barang</p>
                 </a>
               </li>
           <li>
-                <a href="<?php echo base_url('admin/profile')?>">
-                  <i class="nc-icon nc-single-02"></i>
-                  <p>User Profile</p>
-                </a>
-          </li>
-          <li>
-                <a href="<?php echo base_url('admin/users')?>">
-                  <i class="nc-icon nc-tile-56"></i>
-                  <p>Admin</p>
-                </a>
-          </li>
-          <li>
-            <a href="<?php echo base_url('admin/profil')?>">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>profil</p>
-            </a>
           </li>
           <li class="active ">
             <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Tambah Data Satuan</p>
+              <i class="nc-icon nc-simple-add"></i>
+              <p>Tambah Data Masuk</p>
             </a>
           </li>
         </ul>
@@ -194,7 +178,7 @@
                   <div class="row">
                     <div class="update ml-auto mr-auto">
                           <button type="reset" name="btn_reset" class="btn btn-primary btn-round">Reset</button>
-                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Satuan</a>
+                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('Pejabat/tabel_satuan')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Satuan</a>
                           <button type="submit" class="btn btn-success btn-round"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
                     </div>
                   </div>    
