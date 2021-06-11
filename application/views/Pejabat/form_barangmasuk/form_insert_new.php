@@ -4,8 +4,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="<?=base_url()?>/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="<?=base_url()?>/assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Paper Dashboard 2 by Creative Tim
@@ -15,23 +15,23 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="<?=base_url()?>/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="<?=base_url()?>/assets/demo/demo.css" rel="stylesheet" />
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="#" class="simple-text logo-mini">
+        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
           <div class="logo-image-small">
-            <img src="<?=base_url()?> /assets/img/logo-small.png">
+            <img src="../assets/img/logo-small.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="#" class="simple-text logo-normal">
+        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
         <?=$this->session->userdata('name')?>
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -41,43 +41,43 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-              <a href="<?= base_url('admin')?>">
+              <a href="<?= base_url('Pejabat')?>">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-                <a href="<?= base_url('admin/tabel_barangmasuk')?>">
+                <a href="<?= base_url('Pejabat/tabel_barangmasuk_new')?>">
                   <i class="nc-icon nc-pin-3"></i>
                   <p>Data Barang Masuk</p>
                 </a>
           </li>
           <li>
-                <a href="<?= base_url('admin/tabel_barangkeluar')?>">
+                <a href="<?= base_url('Pejabat/tabel_barangkeluar_new')?>">
                   <i class="nc-icon nc-pin-3"></i>
                   <p>Data Barang Keluar</p>
                 </a>
           </li>
           <li>
-                <a href="<?php echo base_url('admin/tabel_barang')?>">
+                <a href="<?php echo base_url('Pejabat/tabel_barang')?>">
                   <i class="nc-icon nc-tile-56"></i>
                   <p>Data Jenis Barang</p>
                 </a>
               </li>
           <li>
-                <a href="<?php echo base_url('admin/profile')?>">
+                <a href="<?php echo base_url('Pejabat/profile')?>">
                   <i class="nc-icon nc-single-02"></i>
                   <p>User Profile</p>
                 </a>
           </li>
           <li>
-                <a href="<?php echo base_url('admin/users')?>">
+                <a href="<?php echo base_url('Pejabat/users')?>">
                   <i class="nc-icon nc-tile-56"></i>
-                  <p>Admin</p>
+                  <p>Pejabat</p>
                 </a>
           </li>
           <li>
-            <a href="<?php echo base_url('admin/profil')?>">
+            <a href="<?php echo base_url('Pejabat/profil')?>">
               <i class="nc-icon nc-tile-56"></i>
               <p>profil</p>
             </a>
@@ -85,7 +85,7 @@
           <li class="active ">
             <a href="./typography.html">
               <i class="nc-icon nc-caps-small"></i>
-              <p>Update Data User</p>
+              <p>Tambah Data Masuk</p>
             </a>
           </li>
         </ul>
@@ -103,7 +103,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">Dashboard</a>
+            <a class="navbar-brand" href="javascript:;">Paper Dashboard 2</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -132,25 +132,25 @@
               </li>
               <li class="nav-item btn-rotate dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="nc-icon nc-settings-gear-65"></i>
+                  <i class="nc-icon nc-bell-55"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="<?= base_url('admin/sigout')?>">Logout</a>
-                  <!-- <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a> -->
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link btn-rotate" href="javascript:;">
                   <i class="nc-icon nc-settings-gear-65"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </div>
         </div>
@@ -161,11 +161,10 @@
           <div class="col-md-12">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">Tambah Data User</h5>
+                <h5 class="card-title">Edit Profile</h5>
               </div>
               <div class="card-body">
-              <form action="<?=base_url('admin/proses_update_user')?>" role="form" method="post">
-
+              <form action="<?=base_url('Pejabat/proses_databarang_masuk_insert')?>" role="form" method="post">
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
                 <div class="alert alert-success alert-dismissible" style="width:91%">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -181,52 +180,101 @@
             <?php } ?>
 
                   <div class="row">
-                    <div class="col-md-12 px-5">
-                      <?php foreach($list_data as $d){ ?>
-                      <input type="hidden" name="id" value="<?=$d->id?>">
+                    <div class="col-md-5 pr-1">
                       <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" required="" class="form-control" id="username" value="<?=$d->username?>">
+                      <label for="id_transaksi">ID Transaksi</label>
+                      <input type="text" name="id_transaksi" class="form-control" readonly="readonly" value="WG-<?=date("Y");?><?=random_string('numeric', 8);?>">
                       </div>
                     </div>
-
-                    <div class="col-md-12 px-5">
-                      <div class="form-group" style="display:block;">
-                        <label for="email" >Email</label>
-                        <input type="text" name="email" class="form-control" id="email" required="" value="<?=$d->email?>">
+                    <div class="col-md-3 px-1">
+                      <div class="form-group">
+                      <label for="tanggal" >Tanggal</label>
+                      <input type="date" name="tanggal"  class="form-control form_datetime" placeholder="Klik Disini">
                       </div>
                     </div>
-
-                    <div class="col-md-12 px-5">
-                    <div class="form-group" style="display:block;">
-                        <label for="role" >Role</label>
-                        <select class="form-control" name="role">
-                          <?php if($d->role == 1){ ?>
-                  <option value="1" selected="">Admin Gudang</option>
-                  <option value="2">Kepala Gudang</option>
-                  <option value="0">Staff Gudang</option>
-                  <?php }else{ ?>
-                  <option value="1">Admin Gudang</option>
-                  <option value="2">Kepala Gudang</option>
-                  <option value="0" selected="">Staff Gudang</option>
-                  <?php } ?>
+                    <div class="col-md-4 pl-1">
+                      <div class="form-group">
+                      <label for="nama_barang">Lokasi</label>
+                  <select class="form-control" name="lokasi">
+                    <option value="">-- Pilih --</option>
+                    <option value="Aceh">Aceh</option>
+                    <option value="Bali">Bali</option>
+                    <option value="Bengkulu">Bengkulu</option>
+                    <option value="Jakarta">Jakarta Raya</option>
+                    <option value="Jambi">Jambi</option>
+                    <option value="Jawa Tengah">Jawa Tengah</option>
+                    <option value="Jawa Timur">Jawa Timur</option>
+                    <option value="Jawa Barat">Jawa Barat</option>
+                    <option value="Papua">Papua</option>
+                    <option value="Yogyakarta">Yogyakarta</option>
+                    <option value="Kalimantan Barat">Kalimantan Barat</option>
+                    <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+                    <option value="Kalimantan Tengah">Kalimantan Tengah</option>
+                    <option value="Kalimantan Timur">Kalimantan Timur</option>
+                    <option value="Lampung">Lampung</option>
+                    <option value="NTB">Nusa Tenggara Barat</option>
+                    <option value="NTT">Nusa Tenggara Timur</option>
+                    <option value="Riau">Riau</option>
+                    <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                    <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+                    <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                    <option value="Sumatera Barat">Sumatera Barat</option>
+                    <option value="Sumatera Utara">Sumatera Utara</option>
+                    <option value="Maluku">Maluku</option>
+                    <option value="Maluku Utara">Maluku Utara</option>
+                    <option value="Sulawesi Utara">Sulawesi Utara</option>
+                    <option value="Sulawesi Selatan">Sumatera Selatan</option>
+                    <option value="Banten">Banten</option>
+                    <option value="Gorontalo">Gorontalo</option>
+                    <option value="Bangka">Bangka Belitung</option>
+                  </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                      <label for="kode_barang">Kode Barang / Barcode</label>
+                      <input type="text" name="kode_barang"  class="form-control" id="kode_barang" placeholder="Kode Barang">
+                      </div>
+                    </div>
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                      <label for="nama_Barang" ">Nama Barang</label>
+                      <input type="text" name="nama_barang" class="form-control" id="nama_Barang" placeholder="Nama Barang">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                      <label for="satuan">Satuan</label>
+                      <select class="form-control" name="satuan">
+                      <option value="" selected="">-- Pilih --</option>
+                      <?php foreach($list_satuan as $s){ ?>
+                      <option value="<?=$s->kode_satuan?>"><?=$s->nama_satuan?></option>
+                      <?php } ?>
                         </select>
+                      </div>
                     </div>
-                    </div>
-                    <?php } ?>
-                    <?php if(isset($token_generate)){ ?>
-                     <input type="hidden" name="token"  class="form-control" value="<?= $token_generate?>">
-                      <?php }else {
-                      redirect(base_url('admin/form_user'));
-                       }?>
-
-                 
-                      <div class="update ml-auto mr-auto">
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                      <label for="jumlah">Jumlah</label>
+                      <input type="number" name="jumlah" class="form-control" id="jumlah" placeholder="jumlah">
+                      </div>
+                    </div> 
+                  </div>
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
                           <button type="reset" name="btn_reset" class="btn btn-primary btn-round">Reset</button>
-                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Satuan</a>
+                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('Pejabat/tabel_barangmasuk_new')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Barang</a>
                           <button type="submit" class="btn btn-success btn-round"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
                     </div>
-                  </div>       
+                  </div>
+                  
+                  
+                
+                  
                 </form>
               </div>
             </div>

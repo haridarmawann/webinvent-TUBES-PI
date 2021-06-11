@@ -4,8 +4,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="<?=base_url()?>/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="<?=base_url()?>/assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Paper Dashboard 2 by Creative Tim
@@ -15,23 +15,23 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="<?=base_url()?>/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="<?=base_url()?>/assets/demo/demo.css" rel="stylesheet" />
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="#" class="simple-text logo-mini">
+        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
           <div class="logo-image-small">
-            <img src="<?=base_url()?> /assets/img/logo-small.png">
+            <img src="../assets/img/logo-small.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="#" class="simple-text logo-normal">
+        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
         <?=$this->session->userdata('name')?>
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -85,7 +85,7 @@
           <li class="active ">
             <a href="./typography.html">
               <i class="nc-icon nc-caps-small"></i>
-              <p>Update Data User</p>
+              <p>Tambah Data Satuan</p>
             </a>
           </li>
         </ul>
@@ -132,25 +132,25 @@
               </li>
               <li class="nav-item btn-rotate dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="nc-icon nc-settings-gear-65"></i>
+                  <i class="nc-icon nc-bell-55"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="<?= base_url('admin/sigout')?>">Logout</a>
-                  <!-- <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a> -->
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link btn-rotate" href="javascript:;">
                   <i class="nc-icon nc-settings-gear-65"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </div>
         </div>
@@ -161,11 +161,12 @@
           <div class="col-md-12">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">Tambah Data User</h5>
+                <h5 class="card-title">Tambah Data satuan</h5>
               </div>
               <div class="card-body">
-              <form action="<?=base_url('admin/proses_update_user')?>" role="form" method="post">
+              <form action="<?=base_url('admin/proses_satuan_insert')?>" role="form" method="post">
 
+              <!-- validation -->
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
                 <div class="alert alert-success alert-dismissible" style="width:91%">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -181,47 +182,22 @@
             <?php } ?>
 
                   <div class="row">
-                    <div class="col-md-12 px-5">
-                      <?php foreach($list_data as $d){ ?>
-                      <input type="hidden" name="id" value="<?=$d->id?>">
+                    <div class="col-md-6 pr-1">
                       <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" required="" class="form-control" id="username" value="<?=$d->username?>">
+                      <label for="kode_satuan" >Kode Satuan</label>
+                      <input type="text" name="kode_satuan" class="form-control" id="kode_satuan" placeholder="Kode Satuan">
                       </div>
                     </div>
-
-                    <div class="col-md-12 px-5">
-                      <div class="form-group" style="display:block;">
-                        <label for="email" >Email</label>
-                        <input type="text" name="email" class="form-control" id="email" required="" value="<?=$d->email?>">
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                      <label for="nama_satuan">Nama Satuan</label>
+                      <input type="text" name="nama_satuan" class="form-control" id="nama_satuan" placeholder="Nama Satuan">
                       </div>
                     </div>
+                  </div>
 
-                    <div class="col-md-12 px-5">
-                    <div class="form-group" style="display:block;">
-                        <label for="role" >Role</label>
-                        <select class="form-control" name="role">
-                          <?php if($d->role == 1){ ?>
-                  <option value="1" selected="">Admin Gudang</option>
-                  <option value="2">Kepala Gudang</option>
-                  <option value="0">Staff Gudang</option>
-                  <?php }else{ ?>
-                  <option value="1">Admin Gudang</option>
-                  <option value="2">Kepala Gudang</option>
-                  <option value="0" selected="">Staff Gudang</option>
-                  <?php } ?>
-                        </select>
-                    </div>
-                    </div>
-                    <?php } ?>
-                    <?php if(isset($token_generate)){ ?>
-                     <input type="hidden" name="token"  class="form-control" value="<?= $token_generate?>">
-                      <?php }else {
-                      redirect(base_url('admin/form_user'));
-                       }?>
-
-                 
-                      <div class="update ml-auto mr-auto">
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
                           <button type="reset" name="btn_reset" class="btn btn-primary btn-round">Reset</button>
                           <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Satuan</a>
                           <button type="submit" class="btn btn-success btn-round"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>

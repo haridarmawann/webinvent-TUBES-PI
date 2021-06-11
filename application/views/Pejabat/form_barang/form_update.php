@@ -4,8 +4,8 @@
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="<?=base_url()?>/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="<?=base_url()?>/assets/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Paper Dashboard 2 by Creative Tim
@@ -25,13 +25,13 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger">
       <div class="logo">
-        <a href="#" class="simple-text logo-mini">
+        <a href="https://www.creative-tim.com" class="simple-text logo-mini">
           <div class="logo-image-small">
-            <img src="<?=base_url()?> /assets/img/logo-small.png">
+            <img src="<?=base_url()?>/assets/img/logo-small.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
-        <a href="#" class="simple-text logo-normal">
+        <a href="https://www.creative-tim.com" class="simple-text logo-normal">
         <?=$this->session->userdata('name')?>
           <!-- <div class="logo-image-big">
             <img src="../assets/img/logo-big.png">
@@ -41,43 +41,43 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-              <a href="<?= base_url('admin')?>">
+              <a href="<?= base_url('Pejabat')?>">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-                <a href="<?= base_url('admin/tabel_barangmasuk')?>">
+                <a href="<?= base_url('Pejabat/tabel_barangmasuk_new')?>">
                   <i class="nc-icon nc-pin-3"></i>
                   <p>Data Barang Masuk</p>
                 </a>
           </li>
           <li>
-                <a href="<?= base_url('admin/tabel_barangkeluar')?>">
+                <a href="<?= base_url('Pejabat/tabel_barangkeluar_new')?>">
                   <i class="nc-icon nc-pin-3"></i>
                   <p>Data Barang Keluar</p>
                 </a>
           </li>
           <li>
-                <a href="<?php echo base_url('admin/tabel_barang')?>">
+                <a href="<?php echo base_url('Pejabat/tabel_barang')?>">
                   <i class="nc-icon nc-tile-56"></i>
                   <p>Data Jenis Barang</p>
                 </a>
               </li>
           <li>
-                <a href="<?php echo base_url('admin/profile')?>">
+                <a href="<?php echo base_url('Pejabat/profilenew')?>">
                   <i class="nc-icon nc-single-02"></i>
                   <p>User Profile</p>
                 </a>
           </li>
           <li>
-                <a href="<?php echo base_url('admin/users')?>">
+                <a href="<?php echo base_url('Pejabat/usersnew')?>">
                   <i class="nc-icon nc-tile-56"></i>
-                  <p>Admin</p>
+                  <p>Pejabat</p>
                 </a>
           </li>
           <li>
-            <a href="<?php echo base_url('admin/profil')?>">
+            <a href="<?php echo base_url('Pejabat/profilenew')?>">
               <i class="nc-icon nc-tile-56"></i>
               <p>profil</p>
             </a>
@@ -85,7 +85,7 @@
           <li class="active ">
             <a href="./typography.html">
               <i class="nc-icon nc-caps-small"></i>
-              <p>Update Data User</p>
+              <p>Tambah Data Satuan</p>
             </a>
           </li>
         </ul>
@@ -132,25 +132,25 @@
               </li>
               <li class="nav-item btn-rotate dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="nc-icon nc-settings-gear-65"></i>
+                  <i class="nc-icon nc-bell-55"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="<?= base_url('admin/sigout')?>">Logout</a>
-                  <!-- <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a> -->
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link btn-rotate" href="javascript:;">
                   <i class="nc-icon nc-settings-gear-65"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </div>
         </div>
@@ -161,18 +161,12 @@
           <div class="col-md-12">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">Tambah Data User</h5>
+                <h5 class="card-title">Tambah Jenis Barang</h5>
               </div>
               <div class="card-body">
-              <form action="<?=base_url('admin/proses_update_user')?>" role="form" method="post">
+              <form action="<?=base_url('Pejabat/proses_barang_update')?>" role="form" method="post">
 
-              <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                <div class="alert alert-success alert-dismissible" style="width:91%">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
-               </div>
-              <?php } ?>
-
+              <!-- validation -->
               <?php if(validation_errors()){ ?>
               <div class="alert alert-warning alert-dismissible">
                   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -181,52 +175,24 @@
             <?php } ?>
 
                   <div class="row">
-                    <div class="col-md-12 px-5">
-                      <?php foreach($list_data as $d){ ?>
-                      <input type="hidden" name="id" value="<?=$d->id?>">
+                    </div>
+                    <div class="col-md-6 pl-1">
                       <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" required="" class="form-control" id="username" value="<?=$d->username?>">
+                         <?php foreach($data_barang as $d){ ?>
+                      <label for="Nama_barang">Nama barang</label>
+                        <input type="text" required name="Nama_barang" class="form-control" id="Nama_barang" placeholder="Nama barang" value="<?=$d->Nama_barang?>">
                       </div>
                     </div>
+                  </div>
 
-                    <div class="col-md-12 px-5">
-                      <div class="form-group" style="display:block;">
-                        <label for="email" >Email</label>
-                        <input type="text" name="email" class="form-control" id="email" required="" value="<?=$d->email?>">
-                      </div>
-                    </div>
-
-                    <div class="col-md-12 px-5">
-                    <div class="form-group" style="display:block;">
-                        <label for="role" >Role</label>
-                        <select class="form-control" name="role">
-                          <?php if($d->role == 1){ ?>
-                  <option value="1" selected="">Admin Gudang</option>
-                  <option value="2">Kepala Gudang</option>
-                  <option value="0">Staff Gudang</option>
-                  <?php }else{ ?>
-                  <option value="1">Admin Gudang</option>
-                  <option value="2">Kepala Gudang</option>
-                  <option value="0" selected="">Staff Gudang</option>
-                  <?php } ?>
-                        </select>
-                    </div>
-                    </div>
-                    <?php } ?>
-                    <?php if(isset($token_generate)){ ?>
-                     <input type="hidden" name="token"  class="form-control" value="<?= $token_generate?>">
-                      <?php }else {
-                      redirect(base_url('admin/form_user'));
-                       }?>
-
-                 
-                      <div class="update ml-auto mr-auto">
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
                           <button type="reset" name="btn_reset" class="btn btn-primary btn-round">Reset</button>
-                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Satuan</a>
+                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('Pejabat/tabel_barang')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List barang</a>
                           <button type="submit" class="btn btn-success btn-round"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
                     </div>
-                  </div>       
+                  </div>    
+                  <?php } ?>   
                 </form>
               </div>
             </div>

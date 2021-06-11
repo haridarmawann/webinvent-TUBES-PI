@@ -39,46 +39,46 @@
       <div class="sidebar-wrapper">
             <ul class="nav">
               <li>
-                <a href="<?= base_url('admin')?>">
+                <a href="<?= base_url('Pejabat')?>">
                   <i class="nc-icon nc-bank"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
               <li>
-                <a href="<?= base_url('admin/tabel_barangmasuk')?>">
+                <a href="<?= base_url('Pejabat/tabel_barangmasuk')?>">
                   <i class="nc-icon nc-diamond"></i>
                   <p>Data Barang Masuk</p>
                 </a>
               </li>
               
               <li>
-                <a href="<?= base_url('admin/tabel_barangkeluar')?>">
+                <a href="<?= base_url('Pejabat/tabel_barangkeluar')?>">
                   <i class="nc-icon nc-pin-3"></i>
                   <p>Data Barang Keluar</p>
                 </a>
               </li>
               <li>
-                <a href="<?php echo base_url('admin/tabel_barang')?>">
+                <a href="<?php echo base_url('Pejabat/tabel_barang')?>">
                   <i class="nc-icon nc-tile-56"></i>
                   <p>Data Jenis Barang</p>
                 </a>
               </li>
               <li>
-                <a href="<?= base_url('admin/tabel_satuan')?>">
+                <a href="<?= base_url('Pejabat/tabel_satuan')?>">
                   <i class="nc-icon nc-bell-55"></i>
                   <p>Data satuan</p>
                 </a>
               </li>
               <li>
-                <a href="<?php echo base_url('admin/profile')?>">
+                <a href="<?php echo base_url('Pejabat/profile')?>">
                   <i class="nc-icon nc-single-02"></i>
                   <p>User Profile</p>
                 </a>
               </li>
               <li class="active">
-                <a href="<?php echo base_url('admin/users')?>">
+                <a href="<?php echo base_url('Pejabat/usersnew')?>">
                   <i class="nc-icon nc-tile-56"></i>
-                  <p>Admin</p>
+                  <p>Pejabat</p>
                 </a>
               </li>
             </ul>
@@ -125,25 +125,25 @@
               </li>
               <li class="nav-item btn-rotate dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="nc-icon nc-settings-gear-65"></i>
+                  <i class="nc-icon nc-bell-55"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="<?= base_url('admin/sigout')?>">Logout</a>
-                  <!-- <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a> -->
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
-              <!-- <li class="nav-item">
+              <li class="nav-item">
                 <a class="nav-link btn-rotate" href="javascript:;">
                   <i class="nc-icon nc-settings-gear-65"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </div>
         </div>
@@ -154,7 +154,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Table Users</h4>
+                <h4 class="card-title">Table Satuan</h4>
                 </div>
               <div class="container-fluid">
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
@@ -164,7 +164,7 @@
                </div>
               <?php } ?>
 
-              <a href="<?=base_url('admin/form_user')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data</a>
+              <a href="<?=base_url('Pejabat/form_user')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data</a>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -193,8 +193,8 @@
                     <td>user</td>
                     <?php }?>
                     <td><?=$dd->last_login?></td>
-                    <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/update_user/'.$dd->id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/proses_delete_user/'.$dd->id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-info"  href="<?=base_url('Pejabat/update_user/'.$dd->id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('Pejabat/proses_delete_user/'.$dd->id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                 </tr>
               <?php endforeach;?>
               <?php }else { ?>
