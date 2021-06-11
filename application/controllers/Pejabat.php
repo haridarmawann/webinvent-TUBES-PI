@@ -272,7 +272,14 @@ class Pejabat extends CI_Controller{
             );
     $this->load->view('Pejabat/tabel/tabel_barangmasuk_new',$data);
   }
-
+  public function barang_disetujui()
+  {
+     $data = array(
+              'list_data' => $this->M_Pejabat->select('tb_barang_persetujuan'),
+              'avatar'    => $this->M_Pejabat->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'))
+            );
+    $this->load->view('Pejabat/tabel/tabel_setuju',$data);
+  }
   public function update_barang($id_transaksi)
   {
     $where = array('id_transaksi' => $id_transaksi);
@@ -286,7 +293,7 @@ class Pejabat extends CI_Controller{
   {
     $where = array('id_transaksi' => $id_transaksi);
     $this->M_Pejabat->delete('tb_barang_masuk',$where);
-    redirect(base_url('Pejabat/tabel_barangmasuk'));
+    redirect(base_url('Pejabat/tabel_barangmasuk_new'));
   }
 
 
@@ -356,9 +363,9 @@ class Pejabat extends CI_Controller{
       );
       $this->M_Pejabat->update('tb_barang_masuk',$data,$where);
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Diupdate');
-      redirect(base_url('Pejabat/tabel_barangmasuk'));
+      redirect(base_url('Pejabat/tabel_barangmasuk_new'));
     }else{
-      $this->load->view('Pejabat/form_barangmasuk/form_update');
+      $this->load->view('Pejabat/form_barangmasuk/form_update_new');
     }
   }
   ####################################
@@ -495,11 +502,12 @@ class Pejabat extends CI_Controller{
               'satuan' => $satuan,
               'jumlah' => $jumlah
       );
+    
         $this->M_Pejabat->insert('tb_barang_keluar',$data);
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
-        redirect(base_url('Pejabat/tabel_barangmasuk'));
+        redirect(base_url('Pejabat/tabel_barangkeluar_new'));
     }else {
-      $this->load->view('perpindahan_barang/form_update/'.$id_transaksi);
+      $this->load->view('perpindahan_barang/form_keluarkan'.$id_transaksi);
     }
 
   }
@@ -591,7 +599,43 @@ public function form_barang()
     $this->M_Pejabat->delete('tb_barang',$where);
     redirect(base_url('Pejabat/tabel_barang'));
   }
+  public function proses_persetujuan_data()
+  {
+    $this->form_validation->set_rules('tanggal_keluar','Tanggal Keluar','trim|required');
+    if($this->form_validation->run() === TRUE)
+    {
+      $id_transaksi   = $this->input->post('id_transaksi',TRUE);
+      $tanggal_masuk  = $this->input->post('tanggal',TRUE);
+      $tanggal_keluar = $this->input->post('tanggal_keluar',TRUE);
+      $lokasi         = $this->input->post('lokasi',TRUE);
+      $kode_barang    = $this->input->post('kode_barang',TRUE);
+      $nama_barang    = $this->input->post('nama_barang',TRUE);
+      $satuan         = $this->input->post('satuan',TRUE);
+      $jumlah         = $this->input->post('jumlah',TRUE);
+      $status         = 'Telah Disetujui';
 
+      $where = array( 'id_transaksi' => $id_transaksi);
+      $data = array(
+              'id_transaksi' => $id_transaksi,
+              'tanggal_masuk' => $tanggal_masuk,
+              'tanggal_keluar' => $tanggal_keluar,
+              'lokasi' => $lokasi,
+              'kode_barang' => $kode_barang,
+              'nama_barang' => $nama_barang,
+              'satuan' => $satuan,
+              'jumlah' => $jumlah,
+              'status' => $status
+      );
+        $this->M_Pejabat->insert('tb_barang_keluar',$data);
+        $where = array('id_transaksi' => $id_transaksi);
+        $this->M_Pejabat->delete('tb_barang_persetujuan',$where);
+        $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
+        redirect(base_url('Pejabat/tabel_barangkeluar_new'));
+    }else {
+      $this->load->view('Pejabat/index');
+    }
+
+  }
 }
 
 

@@ -148,7 +148,7 @@
                 <h5 class="card-title">Tambah Data satuan</h5>
               </div>
               <div class="card-body">
-              <form action="<?=base_url('admin/proses_satuan_update')?>" role="form" method="post">
+              <form action="<?=base_url('Pejabat/proses_satuan_update')?>" role="form" method="post">
 
               <!-- validation -->
               <?php if(validation_errors()){ ?>

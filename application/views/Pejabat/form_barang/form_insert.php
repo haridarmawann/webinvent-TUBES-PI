@@ -41,31 +41,31 @@
       <div class="sidebar-wrapper">
             <ul class="nav">
               <li>
-                <a href="<?= base_url('admin/index')?>">
+                <a href="<?= base_url('Pejabat/index')?>">
                   <i class="nc-icon nc-shop"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
               <li>
-                <a href="<?= base_url('admin/tabel_barangmasuk')?>">
+                <a href="<?= base_url('Pejabat/tabel_barangmasuk')?>">
                   <i class="nc-icon nc-box-2"></i>
                   <p>Data Barang Masuk</p>
                 </a>
               </li>
               <li>
-                <a href="<?= base_url('admin/tabel_barangkeluar')?>">
+                <a href="<?= base_url('Pejabat/tabel_barangkeluar')?>">
                   <i class="nc-icon nc-delivery-fast"></i>
                   <p>Data Barang Keluar</p>
                 </a>
               </li>
               <li>
-                <a href="<?php echo base_url('admin/tabel_barang')?>">
+                <a href="<?php echo base_url('Pejabat/tabel_barang')?>">
                   <i class="nc-icon nc-bullet-list-67"></i>
                   <p>Data Jenis Barang</p>
                 </a>
               </li>
               <li class="active">
-                <a href="<?= base_url('admin/tabel_satuan')?>">
+                <a href="<?= base_url('Pejabat/tabel_satuan')?>">
                   <i class="nc-icon nc-box"></i>
                   <p>Data satuan</p>
                 </a>
@@ -145,7 +145,7 @@
                 <h5 class="card-title">Tambah Data Jenis Barang</h5>
               </div>
               <div class="card-body">
-              <form action="<?=base_url('admin/proses_barang_insert')?>" role="form" method="post">
+              <form action="<?=base_url('Pejabat/proses_barang_insert')?>" role="form" method="post">
 
               <!-- validation -->
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
