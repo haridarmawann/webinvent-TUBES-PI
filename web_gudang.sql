@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 09 Jun 2021 pada 04.57
+-- Waktu pembuatan: 11 Jun 2021 pada 08.56
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.2.22
 
@@ -25,13 +25,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tabel_barang`
+-- Struktur dari tabel `tb_barang`
 --
 
-CREATE TABLE `tabel_barang` (
+CREATE TABLE `tb_barang` (
   `Id_barang` int(11) NOT NULL,
-  `Nama_barang` int(11) NOT NULL
+  `Nama_barang` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `tb_barang`
+--
+
+INSERT INTO `tb_barang` (`Id_barang`, `Nama_barang`) VALUES
+(3, 'daging'),
+(4, 'eric');
 
 -- --------------------------------------------------------
 
@@ -107,8 +115,8 @@ CREATE TABLE `tb_barang_masuk` (
 --
 
 INSERT INTO `tb_barang_masuk` (`id_transaksi`, `tanggal`, `lokasi`, `kode_barang`, `nama_barang`, `satuan`, `jumlah`) VALUES
-('WG-201871602934', '18/01/2018', 'Papua', '312212331222', 'Kopi Hitam', 'Dus', '90'),
-('WG-202141089326', '2000-04-07', 'Papua', '8300188101', 'mobil', 'Dus', '1');
+('WG-202126715034', '2021-06-10', 'Bengkulu', '744489958787', 'televisi', 'unit', '5'),
+('WG-202180697241', '2021-06-10', 'Jambi', '8300188101', 'televisi', 'unit', '10');
 
 -- --------------------------------------------------------
 
@@ -129,7 +137,8 @@ CREATE TABLE `tb_satuan` (
 INSERT INTO `tb_satuan` (`id_satuan`, `kode_satuan`, `nama_satuan`) VALUES
 (1, 'Dus', 'Dus'),
 (2, 'Pcs', 'Pcs'),
-(5, 'Pack', 'Pack');
+(5, 'Pack', 'Pack'),
+(6, 'unit', 'unit');
 
 -- --------------------------------------------------------
 
@@ -178,16 +187,16 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`, `last_login`)
 (12, 'husni', 'husni@gmail.com', '$2y$10$MXbWRsLw6S6xpyQu2/ZiEeB7oTCLrfEPpDcXWaszFVoYj.Yv51wG.', 0, '17-03-2018 11:19'),
 (16, 'test', 'test@gmail.com', '$2y$10$CTjzvmT5B.dxojKZOxsjTeMc4E7.Gwl9slAgX.0lozwGrKSMxzWdO', 1, '16-03-2018 4:46'),
 (17, 'coba', 'coba@gmail.com', '$2y$10$WRMyjAi8nnkr3J3QvzvyHuEoqay5dYd5NgMJKxsxtXKCp8.JCxZm.', 1, '15-01-2018 15:41'),
-(20, 'admin', 'admin@gmail.com', '$2y$10$3HNkMOtwX8X88Xb3DIveYuhXScTnJ9m16/rPDF1/VTa/VTisxVZ4i', 1, '07-06-2021 8:52');
+(20, 'admin', 'admin@gmail.com', '$2y$10$3HNkMOtwX8X88Xb3DIveYuhXScTnJ9m16/rPDF1/VTa/VTisxVZ4i', 1, '10-06-2021 16:38');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `tabel_barang`
+-- Indeks untuk tabel `tb_barang`
 --
-ALTER TABLE `tabel_barang`
+ALTER TABLE `tb_barang`
   ADD PRIMARY KEY (`Id_barang`);
 
 --
@@ -225,6 +234,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_barang`
+--
+ALTER TABLE `tb_barang`
+  MODIFY `Id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_barang_keluar`
 --
 ALTER TABLE `tb_barang_keluar`
@@ -234,7 +249,7 @@ ALTER TABLE `tb_barang_keluar`
 -- AUTO_INCREMENT untuk tabel `tb_satuan`
 --
 ALTER TABLE `tb_satuan`
-  MODIFY `id_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_upload_gambar_user`
