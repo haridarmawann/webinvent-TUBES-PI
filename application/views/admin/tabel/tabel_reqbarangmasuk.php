@@ -38,42 +38,51 @@
       </div>
       <div class="sidebar-wrapper">
             <ul class="nav">
-            <li>
-                <a href="<?= base_url('Pejabat')?>">
+              <li>
+                <a href="<?= base_url('admin/index')?>">
                   <i class="nc-icon nc-shop"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
-
-              <li>
-                <a href="<?= base_url('Pejabat/tabel_barangmasuk')?>">
+              <li class="active">
+                <a href="#">
                   <i class="nc-icon nc-box-2"></i>
                   <p>Data Barang Masuk</p>
                 </a>
               </li>
-              
-              <li class="active">
-                <a href="#">
+              <li>
+                <a href="<?= base_url('admin/tabel_barangkeluar')?>">
                   <i class="nc-icon nc-delivery-fast"></i>
                   <p>Data Barang Keluar</p>
                 </a>
               </li>
               <li>
-                <a href="<?php echo base_url('Pejabat/tabel_barang')?>">
+                <a href="<?php echo base_url('admin/tabel_barang')?>">
                   <i class="nc-icon nc-bullet-list-67"></i>
                   <p>Data Jenis Barang</p>
                 </a>
               </li>
               <li>
-                <a href="<?= base_url('Pejabat/tabel_satuan')?>">
+                <a href="<?= base_url('admin/tabel_satuan')?>">
                   <i class="nc-icon nc-box"></i>
                   <p>Data satuan</p>
                 </a>
               </li>
               <li>
+                <a href="<?php echo base_url('admin/profile')?>">
+                  <i class="nc-icon nc-circle-10 "></i>
+                  <p>User Profile</p>
+                </a>
+              </li>
+              <li>
+                <a href="<?php echo base_url('admin/users')?>">
+                  <i class="nc-icon nc-settings"></i>
+                  <p>Admin</p>
+                </a>
+              </li>
             </ul>
           </div>
-    </div>
+        </div>
     <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
@@ -115,25 +124,25 @@
               </li>
               <li class="nav-item btn-rotate dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="nc-icon nc-bell-55"></i>
+                  <i class="nc-icon nc-settings-gear-65"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="<?= base_url('admin/sigout')?>">Logout</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link btn-rotate" href="javascript:;">
                   <i class="nc-icon nc-settings-gear-65"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>
@@ -144,12 +153,10 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Table Barang Keluar</h4>
+                <h4 class="card-title">Table Barang masuk</h4>
               </div>
 
               <div class="container-fluid">
-              
-
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
                 <div class="alert alert-success alert-dismissible" style="width:100%">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -157,27 +164,33 @@
                </div>
               <?php } ?>
 
-              <a href="<?=base_url('Pejabat/tabel_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Keluar</a>
-              <a href="<?=base_url('report/barangKeluarManual')?>" style="margin-bottom:10px;" type="button" class="btn btn-danger" name="laporan_data"><i class="fa fa-file-text" aria-hidden="true"></i> Invoice Manual</a>
+              <?php if($this->session->flashdata('msg_berhasil_keluar')){ ?>
+                <div class="alert alert-success alert-dismissible" style="width:100%">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil_keluar');?>
+               </div>
+              <?php } ?>
+        
               </div>
+              
               <div class="card-body">
-                <div class="table-responsive">    
+                <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
                     <tr>
                   <th>No</th>
                   <th>QrCode</th>
-                  <th>ID Transaksi</th>
-                  <th>Tanggal Masuk</th>
-                  <th>Tanggal Keluar</th>
+                  <th>ID_Transaksi</th>
+                  <th>Tanggal</th>
                   <th>Lokasi</th>
                   <th>Kode Barang</th>
                   <th>Nama Barang</th>
                   <th>Satuan</th>
                   <th>Jumlah</th>
-                  <th>Status</th>
-                  <th>Invoice</th>
-                  <!-- <th></th> -->
+                  <th>status</th>
+                  <th>Update</th>
+                  <th>Delete</th>
+                  <th>Keluarkan</th>
                 </tr>
                     </thead>
                     <tbody>
@@ -200,24 +213,26 @@
                     QRCode::png($isi_teks,$tempdir.$filename,$quality,$ukuran,$padding);
                     ?>
                     <img width="100px" heigth="100px" src="<?=base_url('temp/'.$filename)?>">
-                      </td>
+                    </td>
                     <td><?=$dd->id_transaksi?></td>
-                    <td><?=$dd->tanggal_masuk?></td>
-                    <td><?=$dd->tanggal_keluar?></td>
+                    <td><?=$dd->tanggal?></td>
                     <td><?=$dd->lokasi?></td>
                     <td><?=$dd->kode_barang?></td>
                     <td><?=$dd->nama_barang?></td>
                     <td><?=$dd->satuan?></td>
                     <td><?=$dd->jumlah?></td>
-                    <td> <a type="button" href="<?=base_url('Pejabat/barang_keluar/'.$dd->id_transaksi)?>" class="btn btn-info" style="width:100%"  name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Setujui</a></td>
-                    <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('Pejabat/tabel_barang_masuk/'.$dd->id_transaksi.'/'.$dd->tanggal_keluar)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                    <td><?=$dd->status?></td>
+                    <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/update_barang/'.$dd->id_transaksi)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/delete_barang/'.$dd->id_transaksi)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-success btn-barangkeluar"  href="<?=base_url('admin/barang_keluar/'.$dd->id_transaksi)?>" name="btn_barangkeluar" style="margin:auto;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></td>
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>
               <?php }else { ?>
                     <td colspan="7" align="center"><strong>Data Kosong</strong></td>
               <?php } ?>
-                </tbody>                  
+                </tbody>
+                    
                   </table>
                 </div>
               </div>

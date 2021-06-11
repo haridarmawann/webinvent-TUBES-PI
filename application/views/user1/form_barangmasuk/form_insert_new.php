@@ -15,10 +15,10 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
-  <link href="<?=base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="<?=base_url()?>/assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="<?=base_url()?>/assets/demo/demo.css" rel="stylesheet" />
+  <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
 <body class="">
@@ -27,7 +27,7 @@
       <div class="logo">
         <a href="https://www.creative-tim.com" class="simple-text logo-mini">
           <div class="logo-image-small">
-            <img src="<?= base_url()?>/assets/img/logo-small.png">
+            <img src="../assets/img/logo-small.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
@@ -39,58 +39,28 @@
         </a>
       </div>
       <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li>
-              <a href="<?= base_url('admin')?>">
-              <i class="nc-icon nc-bank"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li>
-                <a href="<?= base_url('admin/tabel_barangmasuk')?>">
-                  <i class="nc-icon nc-pin-3"></i>
-                  <p>Data Barang Masuk</p>
-                </a>
-          </li>
-          <li>
-                <a href="<?= base_url('admin/tabel_barangkeluar')?>">
-                  <i class="nc-icon nc-pin-3"></i>
-                  <p>Data Barang Keluar</p>
-                </a>
-          </li>
-          <li>
-                <a href="<?php echo base_url('admin/tabel_barang')?>">
-                  <i class="nc-icon nc-tile-56"></i>
-                  <p>Data Jenis Barang</p>
+            <ul class="nav">
+              <li>
+                <a href="<?= base_url('user/index')?>">
+                  <i class="nc-icon nc-shop"></i>
+                  <p>Dashboard</p>
                 </a>
               </li>
-          <li>
-                <a href="<?php echo base_url('admin/profile')?>">
-                  <i class="nc-icon nc-single-02"></i>
-                  <p>User Profile</p>
+              <li class="active">
+                <a href="<?= base_url('user/tabel_barangmasuk')?>">
+                  <i class="nc-icon nc-box-2"></i>
+                  <p>Data Barang Masuk</p>
                 </a>
-          </li>
-          <li>
-                <a href="<?php echo base_url('admin/users')?>">
-                  <i class="nc-icon nc-tile-56"></i>
-                  <p>Admin</p>
+              </li>
+              <li>
+                <a href="<?= base_url('user/tabel_barangkeluar')?>">
+                  <i class="nc-icon nc-delivery-fast"></i>
+                  <p>Data Barang Keluar</p>
                 </a>
-          </li>
-          <li>
-            <a href="<?php echo base_url('admin/profil')?>">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>profil</p>
-            </a>
-          </li>
-          <li class="active ">
-            <a href="./typography.html">
-              <i class="nc-icon nc-caps-small"></i>
-              <p>Edit Data Masuk</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+              </li>
+            </ul>
+          </div>
+        </div>
     <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
@@ -138,7 +108,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="<?= base_url('admin/sigout')?>">Logout</a>
+                  <a class="dropdown-item" href="<?= base_url('user/sigout')?>">Logout</a>
                 </div>
               </li>
               <!-- <li class="nav-item">
@@ -159,10 +129,17 @@
           <div class="col-md-12">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">Edit data barang</h5>
+                <h5 class="card-title">Edit Profile</h5>
               </div>
               <div class="card-body">
-              <form action="<?=base_url('admin/proses_databarang_masuk_update')?>" role="form" method="post">
+              <form action="<?=base_url('user/proses_databarang_masuk_insert')?>" role="form" method="post">
+              <?php if($this->session->flashdata('msg_berhasil')){ ?>
+                <div class="alert alert-success alert-dismissible" style="width:91%">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
+               </div>
+              <?php } ?>
+
               <?php if(validation_errors()){ ?>
               <div class="alert alert-warning alert-dismissible">
                   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -173,22 +150,20 @@
                   <div class="row">
                     <div class="col-md-5 pr-1">
                       <div class="form-group">
-                      <?php foreach($data_barang_update as $d){ ?>
-                        <label for="id_transaksi" >ID Transaksi</label>
-                        <input type="text" name="id_transaksi" class="form-control" readonly="readonly" value="<?=$d->id_transaksi?>">
+                      <label for="id_transaksi">ID Transaksi</label>
+                      <input type="text" name="id_transaksi" class="form-control" readonly="readonly" value="WG-<?=date("Y");?><?=random_string('numeric', 8);?>">
                       </div>
                     </div>
                     <div class="col-md-3 px-1">
                       <div class="form-group">
-                      <label for="tanggal">Tanggal</label>
-                      <input type="text" name="tanggal" class="form-control" readonly="readonly" value="<?=$d->tanggal?>">
+                      <label for="tanggal" >Tanggal</label>
+                      <input type="date" name="tanggal"  class="form-control form_datetime" placeholder="Klik Disini">
                       </div>
                     </div>
                     <div class="col-md-4 pl-1">
                       <div class="form-group">
                       <label for="nama_barang">Lokasi</label>
                   <select class="form-control" name="lokasi">
-                    <option value="<?=$d->lokasi?>"><?=$d->lokasi?></option>
                     <option value="">-- Pilih --</option>
                     <option value="Aceh">Aceh</option>
                     <option value="Bali">Bali</option>
@@ -227,14 +202,14 @@
                   <div class="row">
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
-                      <label for="kode_barang" >Kode Barang / Barcode</label>
-                      <input type="text" name="kode_barang" required class="form-control" id="kode_barang" value="<?=$d->kode_barang?>">
+                      <label for="kode_barang">Kode Barang / Barcode</label>
+                      <input type="text" name="kode_barang"  class="form-control" id="kode_barang" placeholder="Kode Barang">
                       </div>
                     </div>
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
-                      <label for="nama_Barang">Nama Barang</label>
-                      <input type="text" name="nama_barang" required  class="form-control" id="nama_Barang" value="<?=$d->nama_barang?>">
+                      <label for="nama_Barang" ">Nama Barang</label>
+                      <input type="text" name="nama_barang" class="form-control" id="nama_Barang" placeholder="Nama Barang">
                       </div>
                     </div>
                   </div>
@@ -243,42 +218,29 @@
                       <div class="form-group">
                       <label for="satuan">Satuan</label>
                       <select class="form-control" name="satuan">
-                          <?php foreach($list_satuan as $s){?>
-                          <?php if($d->satuan == $s->nama_satuan){?>
-                          <option value="<?=$d->satuan?>" selected=""><?=$d->satuan?></option>
-                          <?php }else{?>
-                          <option value="<?=$s->kode_satuan?>"><?=$s->nama_satuan?></option>
-                          <?php } ?>
-                          <?php } ?>
-                      </select>
+                      <option value="" selected="">-- Pilih --</option>
+                      <?php foreach($list_satuan as $s){ ?>
+                      <option value="<?=$s->kode_satuan?>"><?=$s->nama_satuan?></option>
+                      <?php } ?>
+                        </select>
                       </div>
                     </div>
-                    <div class="col-md-2 pr-1">
-                      <div class="form-group">
-                      <label for="status">Status</label>
-                      <select class="form-control" name="status">
-                      <option value="<?=$d->status?>"><?=$d->status?></option>
-                      <option value="">-- Pilih --</option>
-                      <option value="tidak disetujui">tidak disetujui</option>
-                      <option value="disetujui">disetujui</option>
-                      </div>
-                    </div>
-                    <div class="col-md-2 pl-1">
+                    <div class="col-md-6 pl-1">
                       <div class="form-group">
                       <label for="jumlah">Jumlah</label>
-                      <input type="number" name="jumlah" class="form-control" id="jumlah" value="<?=$d->jumlah?>">
+                      <input type="number" name="jumlah" class="form-control" id="jumlah" placeholder="jumlah">
                       </div>
                     </div> 
-                    
                   </div>
                   <div class="row">
                     <div class="update ml-auto mr-auto">
-                          <a type="button" class="btn btn-danger" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                          <button type="submit" class="btn btn-primary btn-rounded"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+                          <button type="reset" name="btn_reset" class="btn btn-primary btn-round">Reset</button>
+                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('user/tabel_barangmasuk')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Barang</a>
+                          <button type="submit" class="btn btn-success btn-round"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
                     </div>
                   </div>
                   
-                  <?php } ?>
+                  
                 
                   
                 </form>

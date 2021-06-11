@@ -113,7 +113,7 @@ class Admin extends CI_Controller{
 
         $this->load->library('image_lib', $config);
         $this->image_lib->initialize($config);
-				if (!$this->image_lib->resize())
+				if (!$this->image_lib->resize() )
         {
           $data['pesan_error'] = $this->image_lib->display_errors();
           $this->load->view('admin/profile',$data);
@@ -260,18 +260,24 @@ class Admin extends CI_Controller{
   public function form_barangmasuk()
   {
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
-    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/form_barangmasuk/form_insert_new',$data);
   }
+  
 
   public function tabel_barangmasuk()
   {
-    $data = array(
-              'list_data' => $this->M_admin->select('tb_barang_masuk'),
-              'avatar'    => $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'))
-            );
+      
+    $data['list_data'] =$this->M_admin->selectwhere1('tb_barang_masuk','tidak disetujui');
     $this->load->view('admin/tabel/tabel_barangmasuk_new',$data);
-  }
+  } 
+  public function tabel_barangmasuk1()
+  {
+      
+    $data['list_data'] =$this->M_admin->selectwhere1('tb_barang_masuk','disetujui');
+    $this->load->view('admin/tabel/tabel_reqbarangmasuk',$data);
+  } 
+
+  
 
   public function update_barang($id_transaksi)
   {
@@ -343,6 +349,7 @@ class Admin extends CI_Controller{
       $nama_barang  = $this->input->post('nama_barang',TRUE);
       $satuan       = $this->input->post('satuan',TRUE);
       $jumlah       = $this->input->post('jumlah',TRUE);
+      $status       = $this->input->post('status',TRUE);
 
       $where = array('id_transaksi' => $id_transaksi);
       $data = array(
@@ -352,7 +359,8 @@ class Admin extends CI_Controller{
             'kode_barang'  => $kode_barang,
             'nama_barang'  => $nama_barang,
             'satuan'       => $satuan,
-            'jumlah'       => $jumlah
+            'jumlah'       => $jumlah,
+            'status'       => $status
       );
       $this->M_admin->update('tb_barang_masuk',$data,$where);
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Diupdate');
@@ -515,9 +523,40 @@ class Admin extends CI_Controller{
 
   public function tabel_barangkeluar()
   {
-    $data['list_data'] = $this->M_admin->select('tb_barang_keluar');
+    $data['list_data'] =$this->M_admin->selectwhere1('tb_barang_keluar','tidak disetujui');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/tabel/tabel_barangkeluar_new',$data);
+  }
+  public function form_barangkeluar($id_transaksi)
+  {
+    $where = array('id_transaksi' => $id_transaksi);
+    $data['data_barang_update'] = $this->M_admin->get_data('tb_barang_keluar',$where);
+    $data['list_satuan'] = $this->M_admin->select('tb_satuan');
+    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
+    $this->load->view('admin/form_barangkeluar/form_update',$data);
+  }
+
+  public function proses_databarang_keluar_update()
+  {
+    $this->form_validation->set_rules('status','Lokasi','required');
+
+    if($this->form_validation->run() == TRUE)
+    {
+      $id_transaksi = $this->input->post('id_transaksi',TRUE);
+      
+      $status       = $this->input->post('status',TRUE);
+
+      $where = array('id_transaksi' => $id_transaksi);
+      $data = array(
+            'id_transaksi' => $id_transaksi,
+            'status'       => $status
+      );
+      $this->M_admin->update('tb_barang_masuk',$data,$where);
+      $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Diupdate');
+      redirect(base_url('admin/tabel_barangkeluar'));
+    }else{
+      $this->load->view('admin/form_barangkeluar/form_update');
+    }
   }
    ####################################
         // DATA BARANG KELUAR

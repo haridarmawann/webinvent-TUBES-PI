@@ -13,7 +13,15 @@ class M_admin extends CI_Model
   {
     $query = $this->db->get($tabel);
     return $query->result();
-  }
+  } 
+
+  public function selectwhere1($tabel,$status)
+  {
+    return  $this->db->select('*')
+               ->from($tabel)
+               ->where('status',$status)
+               ->get()->result();
+  } 
 
   public function cek_jumlah($tabel,$id_transaksi)
   {

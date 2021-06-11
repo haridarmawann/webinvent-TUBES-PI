@@ -41,49 +41,25 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-              <a href="<?= base_url('admin')?>">
+              <a href="<?= base_url('user')?>">
               <i class="nc-icon nc-bank"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-                <a href="<?= base_url('admin/tabel_barangmasuk')?>">
+                <a href="<?= base_url('user/tabel_barangmasuk')?>">
                   <i class="nc-icon nc-pin-3"></i>
                   <p>Data Barang Masuk</p>
                 </a>
           </li>
           <li>
-                <a href="<?= base_url('admin/tabel_barangkeluar')?>">
+                <a href="<?= base_url('user/tabel_barangkeluar')?>">
                   <i class="nc-icon nc-pin-3"></i>
                   <p>Data Barang Keluar</p>
                 </a>
           </li>
-          <li>
-                <a href="<?php echo base_url('admin/tabel_barang')?>">
-                  <i class="nc-icon nc-tile-56"></i>
-                  <p>Data Jenis Barang</p>
-                </a>
-              </li>
-          <li>
-                <a href="<?php echo base_url('admin/profile')?>">
-                  <i class="nc-icon nc-single-02"></i>
-                  <p>User Profile</p>
-                </a>
-          </li>
-          <li>
-                <a href="<?php echo base_url('admin/users')?>">
-                  <i class="nc-icon nc-tile-56"></i>
-                  <p>Admin</p>
-                </a>
-          </li>
-          <li>
-            <a href="<?php echo base_url('admin/profil')?>">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>profil</p>
-            </a>
-          </li>
           <li class="active ">
-            <a href="./typography.html">
+            <a href="#">
               <i class="nc-icon nc-caps-small"></i>
               <p>Edit Data Masuk</p>
             </a>
@@ -162,7 +138,7 @@
                 <h5 class="card-title">Edit data barang</h5>
               </div>
               <div class="card-body">
-              <form action="<?=base_url('admin/proses_databarang_masuk_update')?>" role="form" method="post">
+              <form action="<?=base_url('user/proses_databarang_masuk_update')?>" role="form" method="post">
               <?php if(validation_errors()){ ?>
               <div class="alert alert-warning alert-dismissible">
                   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -253,23 +229,12 @@
                       </select>
                       </div>
                     </div>
-                    <div class="col-md-2 pr-1">
-                      <div class="form-group">
-                      <label for="status">Status</label>
-                      <select class="form-control" name="status">
-                      <option value="<?=$d->status?>"><?=$d->status?></option>
-                      <option value="">-- Pilih --</option>
-                      <option value="tidak disetujui">tidak disetujui</option>
-                      <option value="disetujui">disetujui</option>
-                      </div>
-                    </div>
-                    <div class="col-md-2 pl-1">
+                    <div class="col-md-6 pl-1">
                       <div class="form-group">
                       <label for="jumlah">Jumlah</label>
                       <input type="number" name="jumlah" class="form-control" id="jumlah" value="<?=$d->jumlah?>">
                       </div>
                     </div> 
-                    
                   </div>
                   <div class="row">
                     <div class="update ml-auto mr-auto">

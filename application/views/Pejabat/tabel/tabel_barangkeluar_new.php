@@ -175,7 +175,6 @@
                   <th>Nama Barang</th>
                   <th>Satuan</th>
                   <th>Jumlah</th>
-                  <th>Status</th>
                   <th>Invoice</th>
                   <!-- <th></th> -->
                 </tr>
@@ -209,7 +208,6 @@
                     <td><?=$dd->nama_barang?></td>
                     <td><?=$dd->satuan?></td>
                     <td><?=$dd->jumlah?></td>
-                    <td> <a type="button" href="<?=base_url('Pejabat/barang_keluar/'.$dd->id_transaksi)?>" class="btn btn-info" style="width:100%"  name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Setujui</a></td>
                     <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('Pejabat/tabel_barang_masuk/'.$dd->id_transaksi.'/'.$dd->tanggal_keluar)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
                 </tr>
               <?php $no++; ?>
