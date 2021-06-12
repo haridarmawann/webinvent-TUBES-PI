@@ -27,7 +27,7 @@
       <div class="logo">
         <a href="https://www.creative-tim.com" class="simple-text logo-mini">
           <div class="logo-image-small">
-            <img src="<?=base_url()?>/assets/img/logo-small.png">
+            <img src="<?= base_url()?>/assets/img/logo-small.png">
           </div>
           <!-- <p>CT</p> -->
         </a>
@@ -83,13 +83,13 @@
                 </a>
               </li> 
           <li class="active ">
-            <a href="./typography.html">
+            <a href="#">
               <i class="nc-icon nc-simple-add"></i>
-              <p>Tambah Data Satuan</p>
+              <p>edit data barang</p>
             </a>
           </li>
         </ul>
-      </div>
+      </div>  
     </div>
     <div class="main-panel">
       <!-- Navbar -->
@@ -159,12 +159,10 @@
           <div class="col-md-12">
             <div class="card card-user">
               <div class="card-header">
-                <h5 class="card-title">Tambah Jenis Barang</h5>
+                <h5 class="card-title">Edit data barang</h5>
               </div>
               <div class="card-body">
-              <form action="<?=base_url('admin/proses_barang_update')?>" role="form" method="post">
-
-              <!-- validation -->
+              <form action="<?=base_url('admin/proses_databarang_keluar_update')?>" role="form" method="post">
               <?php if(validation_errors()){ ?>
               <div class="alert alert-warning alert-dismissible">
                   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -173,24 +171,42 @@
             <?php } ?>
 
                   <div class="row">
-                    </div>
-                    <!-- <div class="col-md-6 pl-1">
-                      <div class="form-group"> -->
-                         <?php foreach($data_barang_update as $d){ ?>
-                      <label for="Nama_barang">Nama barang</label>
-                        <input type="text" required name="Nama_barang" class="form-control" id="Nama_barang" placeholder="Nama barang" value="<?=$d->id_transaksi?>">
-                        <!-- </div>
-                      </div> -->
+                    <div class="col-md-5 pr-1">
+                      <div class="form-group">
+                      <?php foreach($data_barang_update as $d){ ?>
+                        <label for="id_transaksi" >ID Transaksi</label>
+                        <input type="text" name="id_transaksi" class="form-control" readonly="readonly" value="<?=$d->id_transaksi?>">
+                      </div>
+                    </div>   
                   </div>
-
+                  <div class="row">
+                    
+                    <div class="col-md-2 pr-1">
+                      <div class="form-group">
+                      <label for="status">Status</label>
+                      <select class="form-control" name="status">
+                      <option value="<?=$d->status?>"><?=$d->status?></option>
+                      <option value="disetujui">disetujui</option>
+                      </div>
+                    </div>
+                    <div class="col-md-2 pl-1">
+                      <div class="form-group">
+                      <label for="jumlah">Jumlah</label>
+                      <input type="number" name="jumlah" class="form-control" id="jumlah" value="<?=$d->jumlah?>">
+                      </div>
+                    </div> 
+                    
+                  </div>
                   <div class="row">
                     <div class="update ml-auto mr-auto">
-                          <button type="reset" name="btn_reset" class="btn btn-primary btn-round">Reset</button>
-                          <a type="button" class="btn btn-info btn-round" href="<?=base_url('admin/tabel_barang')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List barang</a>
-                          <button type="submit" class="btn btn-success btn-round"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+                          <a type="button" class="btn btn-danger" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                          <button type="submit" class="btn btn-primary btn-rounded"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
                     </div>
-                  </div>    
-                  <?php } ?>   
+                  </div>
+                  
+                  <?php } ?>
+                
+                  
                 </form>
               </div>
             </div>
@@ -225,4 +241,4 @@
       </script>
 </body>
 
-</html>
+</html

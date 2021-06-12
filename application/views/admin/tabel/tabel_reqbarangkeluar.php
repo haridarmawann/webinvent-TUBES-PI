@@ -166,8 +166,8 @@
                </div>
               <?php } ?>
 
-              <a href="<?=base_url('admin/tabel_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Keluar</a>
-              <a href="<?=base_url('report/barangKeluarManual')?>" style="margin-bottom:10px;" type="button" class="btn btn-danger" name="laporan_data"><i class="fa fa-file-text" aria-hidden="true"></i> Invoice Manual</a>
+              <a href="<?=base_url('admin/tabel_barangkeluar')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i>Kembali </a>
+    
               </div>
               <div class="card-body">
                 <div class="table-responsive">    
@@ -186,7 +186,7 @@
                   <th>Jumlah</th>
                   <th>status</th>
                   <th>Invoice</th>
-                  <th>setujui</th>
+                  
                   <!-- <th></th> -->
                 </tr>
                     </thead>
@@ -221,7 +221,7 @@
                     <td><?=$dd->jumlah?></td>
                     <td><?=$dd->status?></td>
                     <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('report/barangKeluar/'.$dd->id_transaksi.'/'.$dd->tanggal_keluar)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/form_barangkeluar/'.$dd->id_transaksi)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                   
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>

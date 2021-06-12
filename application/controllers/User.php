@@ -92,10 +92,9 @@ class User extends CI_Controller
 
   public function tabel_barangmasuk()
   {
-    $data = array(
-              'list_data' => $this->M_admin->select('tb_barang_masuk'),
-              'avatar'    => $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'))
-            );
+  
+    $data['list_data'] =$this->M_admin->selectwhere1('tb_barang_masuk','disetujui');
+            
     $this->load->view('user1/tabel/tabel_barangmasuk_new',$data);
   }
 
@@ -195,7 +194,7 @@ class User extends CI_Controller
 
   public function tabel_barangkeluar()
   {
-    $data['list_data'] = $this->M_admin->select('tb_barang_keluar');
+    $data['list_data'] =$this->M_admin->selectwhere1('tb_barang_keluar','disetujui');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('user1/tabel/tabel_barangkeluar_new',$data);
   }

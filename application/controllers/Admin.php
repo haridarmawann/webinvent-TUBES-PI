@@ -527,6 +527,12 @@ class Admin extends CI_Controller{
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/tabel/tabel_barangkeluar_new',$data);
   }
+  public function tabel_barangkeluar1()
+  {
+    $data['list_data'] =$this->M_admin->selectwhere1('tb_barang_keluar','disetujui');
+    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
+    $this->load->view('admin/tabel/tabel_reqbarangkeluar',$data);
+  }
   public function form_barangkeluar($id_transaksi)
   {
     $where = array('id_transaksi' => $id_transaksi);
@@ -538,17 +544,15 @@ class Admin extends CI_Controller{
 
   public function proses_databarang_keluar_update()
   {
-    $this->form_validation->set_rules('status','Lokasi','required');
+    $this->form_validation->set_rules('status','Status','required');
 
     if($this->form_validation->run() == TRUE)
     {
-      $id_transaksi = $this->input->post('id_transaksi',TRUE);
-      
+      $id_transaksi = $this->input->post('id_transaksi',TRUE); 
       $status       = $this->input->post('status',TRUE);
 
       $where = array('id_transaksi' => $id_transaksi);
       $data = array(
-            'id_transaksi' => $id_transaksi,
             'status'       => $status
       );
       $this->M_admin->update('tb_barang_masuk',$data,$where);

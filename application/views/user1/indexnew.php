@@ -43,7 +43,7 @@
               <!-- <p>CT</p> -->
             </a>
             <a href="#" class="simple-text logo-normal">
-              Admin
+            <?=$this->session->userdata('name')?>
               <!-- <div class="logo-image-big">
                 <img src="../assets/img/logo-big.png">
               </div> -->

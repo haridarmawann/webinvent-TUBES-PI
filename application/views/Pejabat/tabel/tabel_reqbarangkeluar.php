@@ -38,20 +38,18 @@
       </div>
       <div class="sidebar-wrapper">
             <ul class="nav">
-            <li>
-                <a href="<?= base_url('Pejabat')?>">
+              <li>
+                <a href="<?= base_url('Pejabat/index')?>">
                   <i class="nc-icon nc-shop"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
-
               <li>
                 <a href="<?= base_url('Pejabat/tabel_barangmasuk')?>">
                   <i class="nc-icon nc-box-2"></i>
                   <p>Data Barang Masuk</p>
                 </a>
               </li>
-              
               <li class="active">
                 <a href="#">
                   <i class="nc-icon nc-delivery-fast"></i>
@@ -71,9 +69,20 @@
                 </a>
               </li>
               <li>
+                <a href="<?php echo base_url('Pejabat/profile')?>">
+                  <i class="nc-icon nc-circle-10 "></i>
+                  <p>User Profile</p>
+                </a>
+              </li>
+              <li>
+                <a href="<?php echo base_url('Pejabat/users')?>">
+                  <i class="nc-icon nc-settings"></i>
+                  <p>Pejabat</p>
+                </a>
+              </li>
             </ul>
           </div>
-    </div>
+        </div>
     <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
@@ -115,25 +124,25 @@
               </li>
               <li class="nav-item btn-rotate dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="nc-icon nc-bell-55"></i>
+                  <i class="nc-icon nc-settings-gear-65"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="<?= base_url('Pejabat/sigout')?>">Logout</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link btn-rotate" href="javascript:;">
                   <i class="nc-icon nc-settings-gear-65"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>
@@ -157,8 +166,8 @@
                </div>
               <?php } ?>
 
-              <a href="<?=base_url('Pejabat/tabel_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Keluar</a>
-              <a href="<?=base_url('report/barangKeluarManual')?>" style="margin-bottom:10px;" type="button" class="btn btn-danger" name="laporan_data"><i class="fa fa-file-text" aria-hidden="true"></i> Invoice Manual</a>
+              <a href="<?=base_url('Pejabat/tabel_barangkeluar')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i>Kembali </a>
+    
               </div>
               <div class="card-body">
                 <div class="table-responsive">    
@@ -175,8 +184,9 @@
                   <th>Nama Barang</th>
                   <th>Satuan</th>
                   <th>Jumlah</th>
+                  <th>status</th>
                   <th>Invoice</th>
-                  <th></th>
+                  
                   <!-- <th></th> -->
                 </tr>
                     </thead>
@@ -209,7 +219,9 @@
                     <td><?=$dd->nama_barang?></td>
                     <td><?=$dd->satuan?></td>
                     <td><?=$dd->jumlah?></td>
-                    <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('Pejabat/tabel_barang_masuk/'.$dd->id_transaksi.'/'.$dd->tanggal_keluar)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                    <td><?=$dd->status?></td>
+                    <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('report/barangKeluar/'.$dd->id_transaksi.'/'.$dd->tanggal_keluar)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                   
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>
